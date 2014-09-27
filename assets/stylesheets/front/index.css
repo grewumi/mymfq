@@ -1,0 +1,144 @@
+@CHARSET "gbk";
+body{
+	background:url(/assets/images/front/index/background_bg.png);
+}
+*{
+	padding:0px;margin:0px;
+}
+
+
+
+.around-index{
+	width:100%;
+}
+.main-index{
+	width:100%;margin:0 auto;
+	
+}
+.main-index .sub-index{
+	text-align:center;padding-top:20px;width:100%;
+
+}
+.main-index .sub-index a{
+	display:block;text-decoration:none;width:25%;text-align:center;font-size:16px;color:#acacac; padding:5px 0px;float:left;
+}
+.main-index .sub-index a.cur{
+	color:#333;
+}
+.item-list{
+	margin-top:10px;width:100%;position:relative;/* width:1151px; */
+
+}
+.item-list .item-row{
+	margin:3px 10px 5px 3px;float:left;width:46%;/* width:278px; */
+}
+.item-list .row-left{
+	margin-left:0px;width:46%;
+}
+.item-list .row-right{
+	margin-right:0px;width:46%;
+}
+.item-list .item{
+	background:#fff;margin:8px auto;border:solid 3px #EDF1ED;position:relative;width:100%;
+}
+.item-list .item:hover{
+	border:solid 3px #FF3366;
+	background:#F9F0E1;
+}
+
+/* 每个商品单元内的内容定位 */
+.item-list .item .position{
+	width:100%;margin:1% auto;
+}
+/* 每个商品单元内的内容定位 */
+.item-list .item a{
+	text-decoration:none;font-size:100%;
+}
+
+.item-list .item .admin-edit{
+	position:absolute;
+	right:5px;
+	top:5px;
+	width:90px;
+	z-index:999;
+}
+.item-list .item .admin-edit a{
+	display:inline-block;
+	float:left;
+	background:#FF70A7;
+	padding: 3px;
+	margin-left: 5px;
+	color: rgb(255, 255, 255);
+	border-radius: 3px 3px 3px 3px;
+	box-shadow: 3px 1px 3px rgb(204, 204, 204);
+}
+
+.item-list .item .item-title{
+	/*height:16px;*/
+	overflow:hidden;
+} 
+.item-list .item .item-title a{
+	color:#5e5e5e;/*font-size:14px;*/font-size:100%;	
+}
+
+.item-list .item .item-title a:hover{
+	text-decoration:underline;
+	color:red;
+}
+.item-list .item .item-pic{
+	width:100%;
+}
+.item-list .item .item-pic img{
+	width:100%;
+}
+.item-list .item .item-price{
+	margin:0 auto;padding:0px;height:100%;font-weight:bolder;position:relative;font-size:126%;
+}
+.item-list .item .item-price .price{
+	font-family: "Microsoft Yahei","Arial","Verda","tahoma";
+	display: inline-block;color:#FF3366;
+}
+.item-list .item .item-price .price span{
+	font-size:80%;display:inline-block;margin-left:-5%;
+}
+.item-list .item .item-price b{
+	font-size:16px;
+}
+.item-list .item .item-price .old-price{
+	color:gray;text-decoration: line-through;font-size: 14px;font-weight:normal;
+	letter-spacing: -1px;font-family: Tahoma,Helvetica,Arial,'宋体',sans-serif;margin-left:-10px;
+}
+.item-list .item .item-price .buy{
+	/*width:87px;height:56px;width:60%;height:56px;*/
+	position: absolute;right: 0px;
+}
+.xiai-page{
+	padding:35px 0px;
+	text-align:center;
+}
+.xiai-page a.yema-or-cur{
+	color:#DD1B1B;
+	text-decoration:none; 
+	display:inline-block;
+	background:#fff;
+	padding:8px 15px;
+	border-color: rgb(231, 230, 230);
+	box-shadow: 3px 1px 3px rgb(204, 204, 204);
+	font-weight: bold;margin-bottom:5px;
+}
+.xiai-page b.cur{
+	display:inline-block;
+	background:#DD1B1B;
+	color:#F5FF09;
+	padding:8px 15px;
+}
+.clearfix{
+	clear:both;
+}
+.item tkbox{
+	position:absolute;top:0px;
+}
+.item tkbox iframe{
+	width:100%;height:100%;
+}
+

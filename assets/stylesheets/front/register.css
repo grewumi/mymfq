@@ -1,0 +1,20 @@
+@CHARSET "gbk";
+body{
+	background:url(/assets/images/front/index/background_bg.png);
+}
+.register-main{
+	position:relative;
+	width:80%;
+	height:80%;
+	margin:5% auto;
+	background:#fff;
+	box-shadow: 0px 0px 1px rgba(34, 25, 25, 0.1);
+	border: 1px solid rgb(230, 228, 228);
+}
+.register-main .left{
+	float:left;
+	margin:10px;
+}
+.register-main .right{
+	float:right;
+}

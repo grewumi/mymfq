@@ -1,0 +1,20 @@
+@CHARSET "gbk";
+.admin-proget{
+	width:990px;
+	margin:0 auto;
+}
+.proget-info{
+	padding-top:60px;
+}
+.proget-info .proget-ctrl a{
+	display:inline-block;
+	position:relative;
+	margin-right:20px;
+	margin-bottom: 20px;
+}
+.proget-info .proget-ctrl b{
+	display:inline-block;
+	position:absolute;
+	color:red;
+	top:-15px;
+}

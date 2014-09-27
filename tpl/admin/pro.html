@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<title>后台  - 商品管理</title>
+<link rel="stylesheet" href="/assets/stylesheets/admin/head.css" />
+<link rel="stylesheet" href="/assets/stylesheets/admin/pro.css" />
+<link rel="stylesheet" href="/assets/stylesheets/admin/page.css" />
+</head>
+<body>
+	{include file="admin/head.html"}
+	<div class="pro-ctrl">
+		<a href="{spUrl c=admin a=pro type=87}">明日预告</a>
+		<a href="{spUrl c=admin a=pro sh=no}">未审核</a>
+		<a href="{spUrl c=admin a=pro sh=ck2}">未通过</a>
+		<a href="{spUrl c=admin a=addpro}">添加商品</a>
+		<form action="{spUrl c=admin a=pro}" method="post">
+			<input name="q"/>
+			<input type="submit" value="搜索"/>
+		</form>
+	</div>
+	<div class="admin-pro-around">
+		<div class="admin-pro">
+			<div class="pro-info">
+				<ul>
+				{foreach key=k item=v from=$items}
+					<li>
+						<span>{$v.rank}</span>
+						<span class="pic"><img src="{$v.pic}" /></span>
+						<a target="_blank" href="http://item.taobao.com/item.htm?id={$v.iid}">
+							<span class="title">{$v.title}</span>
+						</a>
+						<span class="short">{$v.oprice}</span>
+						<span class="short">{$v.nprice}</span>
+						<span class="short">{$v.volume}</span>
+                                                <span class="short">{$v.commission_rate}%</span>
+						<span><a href="{spUrl c=admin a=delpro id=$v.id}">删除</a></span>
+						<span><a href="{spUrl c=admin a=modpro id=$v.id}">修改</a></span>
+						<span><a href="{spUrl c=admin a=checkpro id=$v.id}">审核</a></span>
+					</li>
+					{if $v.reason}<div class="reason">{$v.reason}</div>{/if}
+				{/foreach}
+				</ul>
+			</div>
+			<div class="admin-page">
+		    {if $pager}
+			    共有商品{$pager.total_count}个，共有{$pager.total_page}页（每页{$pager.page_size}个商品）：
+			    <!--在当前页不是第一页的时候，显示前页和上一页-->
+			    {if $pager.current_page != $pager.first_page}
+				    <a href="{spUrl c=admin a=pro page=$pager.first_page}">第一页</a> |
+				    <a href="{spUrl c=admin a=pro page=$pager.prev_page}">上一页</a> |
+			    {/if}
+			    <!--开始循环页码，同时如果循环到当前页则不显示链接-->
+			    {foreach from=$pager.all_pages item=thepage}
+			            {if $thepage != $pager.current_page}
+			            	{if $thepage<=$pager.current_page+8 && $thepage>=$pager.current_page-2}
+			                	<a href="{spUrl c=admin a=pro page=$thepage}">{$thepage}</a>
+			            	{/if}									
+			            {else}
+			            	<b>{$thepage}</b>
+			            {/if}
+			    {/foreach}
+			    <!--在当前页不是最后一页的时候，显示下一页和后页-->
+			    {if $pager.current_page != $pager.last_page}
+			    	|
+				    <a href="{spUrl c=admin a=pro page=$pager.next_page}">下一页</a> |
+				    <a href="{spUrl c=admin a=pro page=$pager.last_page}">尾页</a>
+			    {/if}
+			{/if}
+		</div>
+		</div>
+	</div>
+</body>
+</html>

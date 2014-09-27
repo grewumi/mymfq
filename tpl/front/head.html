@@ -1,0 +1,47 @@
+<div class="head-around">
+	<script src="http://l.tbcdn.cn/apps/top/x/sdk.js?appkey=21677073"></script>
+	<div class="head-index">
+		<div class="logo"><img src="/assets/images/front/index/logo.png" /></div>
+		<div class="searchitem">
+			<form action="{spUrl c=main a=index}" method=POST>
+				<input class="sbox" name="searchKey" />
+				<input class="spress" type="submit" value="搜索" />
+			</form>
+		</div>
+		<div style="display:none;float:right;color:#fff;font-size:20px;margin:-40px 40px 0px 0px;">
+			站外地址:http://www.yimiaofengqiang.com<br/>
+			U站地址：http://yinxiang.uz.taobao.com
+		</div>
+	</div>
+</div>
+<div class="head-nav-around">
+	<div class="head-nav">
+		<a href="/" {if $index}class="cur"{/if}>首页</a>
+		<a href="{spUrl c=main a=index price=1_10}" {if $price=="1_10"}class="cur"{/if}>9.9专区</a>
+		<a href="{spUrl c=main a=index price=10_20}" {if $price=="10_20"}class="cur"{/if}>19.9专区</a>
+		<a href="{spUrl c=main a=index price=20_30}" {if $price=="20_30"}class="cur"{/if}>29.9专区</a>
+		<a href="{spUrl c=main a=index price=30_40}" {if $price=="30_40"}class="cur"{/if}>39.9专区</a>
+		<a href="{spUrl c=main a=index type=87}" {if $type==87}class="cur"{/if}>明日预告</a>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<div class="m-head-nav-around" style="display:none;">
+	<div class="m-head-nav">
+		<select>
+			<option>首页</option>
+			<option value="1_10">9.9专区</option>
+			<option value="1_10">19.9专区</option>
+			<option value="1_10">29.9专区</option>
+			<option value="1_10">39.9专区</option>
+			<option value="1_10">明日预告</option>
+		</select>
+	</div>
+	<div class="m-head-nav">
+		<select>
+			<option>全部</option>
+			{foreach key=k item=v from=$procats}
+			<option value="{$v.type}">{$v.name}</option>
+			{/foreach}
+		</select>
+	</div>
+</div>

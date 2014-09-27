@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<title>后台  - 商品添加</title>
+<link rel="stylesheet" href="/assets/stylesheets/admin/head.css" />
+<link rel="stylesheet" href="/assets/stylesheets/admin/modpro.css" />
+<script type="text/javascript"  src="/assets/Javascripts/jquery-2.0.3.min.js"></script>
+<script type="text/javascript"  src="/assets/Javascripts/admin/addpro.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	huoqu();
+});
+</script>
+</head>
+<body>
+	{include file="admin/head.html"}
+	<div class="admin-modpro-around">
+		<div class="admin-modpro">
+			
+			<form method="post">
+				<div class="modpro-info">
+					
+					<div class="row">
+						<label class="tips">{if $submitTips}{$submitTips}{/if}</label>					
+						<div class="clearfix"></div>
+					</div>
+					
+					<div class="row">
+						<label>商品ID:</label><input id="iid" name="iid" type="text" onKeyUp="value=value.replace(/[^\d]/gi,'');" onpaste="value=value.replace(/[^\d]/gi,'');" />
+						<input class="btn" id="huoqu" type="button" value="一键获取" />
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<label>标题:</label><input class="long" name="title" id="title" type="text" />
+						<a class="jiabt">加标头</a>
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<label>类别:</label>
+						<select name="type">
+							<option value="1">全部</option>
+							<option value="88">每日爆款</option>
+							<option value="89">每日精选</option>
+							<option value="85">广告位</option>
+							<option value="86">一秒疯抢招商</option>
+							<option value="87">明日预告</option>
+						</select>
+						<select name="act_from">
+						{foreach key=k item=v from=$actfroms}						
+							<option value="{$v.id}" {if $pro.act_from==$v.id}selected="true"{/if}>{$v.name}</option>
+						{/foreach}
+						</select>
+						<select name="cat">
+						{foreach key=k item=v from=$proCats}
+							<option value="{$v.type}"  {if $pro.cat==$v.type}selected="true"{/if}>{$v.name}</option>
+						{/foreach}	
+						</select>
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<label>原价:</label><input class="short" id="oprice" name="oprice" type="text" />
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<label>现价:</label><input class="short" name="nprice" type="text" />
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<label>销量:</label><input class="short" name="volume" type="text" value="200" />
+						<span><a class="getVolume">获取销量</a></span>
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<label>商品链接:</label><input class="long" id="link" type="text" />
+						<span></span>
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<label>开始日期:</label><input class="short" name="st" type="text" value="{$st}" />
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<label>结束日期:</label><input class="short" name="et" type="text" value="{$et}" />
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<label>商品图片:</label><input class="long" id="pic" name="pic" type="text" />
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+							<label class="gengduotupian">更多图片:</label>
+							<div class="pro-pic-list">
+								
+							</div>
+							<div class="clearfix"></div>
+					</div>
+					<div class="row shopshow">
+						<label>淘宝/天猫:</label>
+						<input type="radio" name="shopshow" value="1" checked /><label>淘宝:</label>
+						<input type="radio" name="shopshow" value="0" /><label>天猫:</label>
+						<div class="clearfix"></div>
+					</div>
+					<div class="row shopv">
+						<label>是否VIP价格:</label>
+						<input type="radio" name="shopv" value="1" /><label>VIP:</label>
+						<input type="radio" name="shopv" value="0" checked /><label>非VIP:</label>
+						<div class="clearfix"></div>
+					</div>	
+					<div class="row">
+						<label>是否包邮:</label>
+						<input type="radio" name="carriage" value="1" checked /><label>包邮:</label>
+						<input type="radio" name="carriage" value="0" /><label>不包邮:</label>
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<label>更新排前:</label>
+						<input type="radio" name="forward" value="1" /><label>排前:</label>
+						<input type="radio" name="forward" value="0" checked /><label>不排前:</label>
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<label>排序:</label><input class="short" id="rank" name="rank" type="text" value="500" />
+						<em class="rank"><a class="set499">499</a><a class="set500">500</a></em>
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<label>旺旺:</label><input class="short" id="ww" name="ww" type="text" />
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<label>备注:</label><textarea class="long" name="remark"></textarea>
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<label>提交:</label><input type="submit" name="modPro" value="提交" />
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</form>	
+			
+			<div class="modinfo-pic">
+				
+			</div>	
+			
+			<div class="clearfix"></div>
+		</div>
+		
+		<div class="clearfix"></div>
+	</div>
+</body>
+</html>

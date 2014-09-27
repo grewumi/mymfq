@@ -1,0 +1,21 @@
+@CHARSET "gbk";
+.admin-index{
+	width:990px;
+	margin:0 auto;
+}
+.index-info{
+	width:400px;
+	height:200px;
+	padding-top:80px;
+	font-size:28px;
+	color:gray;
+}
+.index-info strong{
+	display:block;
+}
+.index-info strong b.red{
+	color:red;
+}
+.index-info strong b.blue{
+	color:blue;
+}

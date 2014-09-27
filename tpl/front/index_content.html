@@ -1,0 +1,67 @@
+<div class="around-index">
+	<div class="main-index">
+		<div class="sub-index">
+			<a href="/" {if !$procat}class="cur"{/if}>全部宝贝</a>
+			{foreach key=k item=v from=$procats}
+				<a id="threetoone" href="{spUrl a=index procat=$v.type}" {if $procat==$v.type}class="cur"{/if}>{$v.name}</a>
+			{/foreach}
+			<div class="clearfix"></div>
+		</div>
+		<div class="item-list">
+			{foreach key=k item=iv from=$items}
+			<div class="item-row {if $k==0}row-left{elseif $k==3}row-right{/if}">
+				{foreach key=k item=v from=$iv}
+				<div class="item" style="display:block;">
+					{if $admin}
+					<div class="admin-edit">
+						<a target="_blank" href="{spUrl c=admin a=delpro id=$v.id}">删除</a>
+						<a target="_blank" href="{spUrl c=admin a=modpro id=$v.id}">修改</a>
+					</div>
+					{/if}
+					<div class="item-pic" style="position:relative;">
+						<a target="_blank" href="{spUrl c=main a=deal id=$v.id}">
+							<img id="item-pic" src="{$v.pic}" alt="{$v.title}" />
+						</a>
+					</div>
+					<div class="item-title position"><a target="_blank" href="{spUrl c=main a=deal id=$v.id}">{$v.title}</a></div>
+					<div class="item-price position" style="position:relative;">
+						<span class="price">
+							<b>￥</b>{(int)$v.nprice}
+							<span>.{$v.nprice_tail}</span>
+						</span>
+						<span class="old-price">{$v.oprice}</span>
+						<a target="_blank" href="{spUrl c=main a=deal id=$v.id}">
+							<span class="buy"><img id="buy" src="/assets/images/front/index/buy.jpg" /></span>
+						</a>
+					</div>
+					
+				</div>
+				{/foreach}
+			</div>
+			{/foreach}
+			<div class="clearfix"></div>
+		</div>
+		<div class="xiai-page">
+		    {if $pager}
+		    	<!--在当前页不是第一页的时候，显示前页和上一页-->
+			    {if $pager.current_page != $pager.first_page}
+				   <a class="yema-or-cur" href="{spUrl c=main a=index procat=$procat type=$type price=$price q=$q page=$pager.prev_page}">上一页</a> 
+			    {/if}
+			    <!--开始循环页码，同时如果循环到当前页则不显示链接-->
+			    {foreach from=$pager.all_pages item=thepage}
+			            {if $thepage != $pager.current_page}
+			            	{if $thepage<=$pager.current_page+8 && $thepage>=$pager.current_page-2}
+			                	<a class="yema-or-cur" href="{spUrl c=main a=index procat=$procat type=$type price=$price q=$q page=$thepage}">{$thepage}</a>
+			            	{/if}									
+			            {else}
+			            	<b class="cur">{$thepage}</b>
+			            {/if}
+			    {/foreach}
+			    <!--在当前页不是最后一页的时候，显示下一页和后页-->
+			    {if $pager.current_page != $pager.last_page}
+			    	<a class="yema-or-cur" href="{spUrl c=main a=index procat=$procat type=$type price=$price q=$q page=$pager.next_page}">下一页</a>
+			    {/if}
+			{/if}
+		</div>
+	</div>
+</div>

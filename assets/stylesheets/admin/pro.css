@@ -1,0 +1,55 @@
+@CHARSET "gbk";
+.admin-pro{
+	width:990px;
+	margin:0 auto;
+}
+.pro-info{
+	padding-top:80px;
+}
+.pro-info ul{
+	list-style-type:none; 
+}
+.pro-info li{
+	position:relative;
+	margin:3px 0px 3px -40px;
+	padding:0px;
+	height:65px;
+}
+.pro-info span{
+	display:block;
+	float:left;
+	margin:auto 8px;
+	line-height:65px;
+}
+.pro-info span.pic{
+	margin-top:3px;
+}
+.pro-info span.pic img{
+	width:60px;
+	height:60px; 
+}
+.pro-info span.title{
+	width:200px;
+	height:47px;
+	font-size:10px;
+	line-height:17px; 
+	padding-top: 16px; 
+}
+.pro-info span.short{
+	width:50px
+}
+.pro-info .reason{
+	text-align:center;
+	background:#888;
+	color:#fff;
+	padding:5px 0px;
+}
+.pro-ctrl{
+	padding-top:30px;
+	width:990px;
+	margin:0 auto;
+	position:relative;
+}
+.pro-ctrl a,form{
+	display:inline-block;
+}

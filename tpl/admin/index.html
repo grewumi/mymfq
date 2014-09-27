@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<title>后台  - 管理首页</title>
+<link rel="stylesheet" href="/assets/stylesheets/admin/head.css" />
+<link rel="stylesheet" href="/assets/stylesheets/admin/index.css" />
+</head>
+<body>
+	{include file="admin/head.html"}
+	<div class="admin-index-around">
+		<div class="admin-index">
+			<div class="index-info">
+				<strong>商品总数:<b class="red">{$allPros}</b>(未过期)</strong>
+				<strong>今日上新:<b class="blue">{$todayPros}</b></strong>
+				<strong>过期商品:{if $guoqis}<b class="red" style="margin-right:18px;">{$guoqis}</b><a href="{spUrl c=admin a=delgq}">删除</a>{/if}</strong>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

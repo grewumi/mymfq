@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<title>一秒疯抢  - 商品审核</title>
+<link rel="stylesheet" href="/assets/stylesheets/admin/head.css" />
+<link rel="stylesheet" href="/assets/stylesheets/admin/checkpro.css" />
+<script type="text/javascript"  src="/assets/Javascripts/jquery-2.0.3.min.js"></script>
+<script type="text/javascript"  src="/assets/Javascripts/admin/checkpro.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	hideR();
+});
+</script>
+</head>
+<body>
+{include file="admin/head.html"}
+<div>
+	<div class="check-index">
+		<div class="check-info">
+			<form action="{spUrl c=admin a=checkpro id=$pro.id}" method="post">
+				<div>
+					<input type="radio" value="1" name="checkpro" onclick="hideR()" />
+					<label>通过</label>
+					<input type="radio" value="2" name="checkpro" onclick="showR()" />
+					<label>不通过</label>
+				</div>
+				<div class="reason-select" id="reason-select">
+					<input id="reason-1" type="checkbox" value="报名商品单价过高," name="reasonSelect[]" />
+					<label for="reason-1">报名商品单价过高</label><br />
+					<input id="reason-2" type="checkbox" value="此类商品不符合我们的招商要求," name="reasonSelect[]" />
+					<label for="reason-2">此类商品不符合我们的招商要求</label><br />
+					<input id="reason-3" type="checkbox" value="本站对商品的要求是一钻店铺  10销量 10评价," name="reasonSelect[]" />
+					<label for="reason-3">本站对商品的要求是一钻店铺  10销量 10评价</label><br />
+					<input id="reason-4" type="checkbox" value="挂好logo  banner  标题," name="reasonSelect[]" />
+					<label for="reason-4">挂好logo  banner  标题</label><br />
+					<input id="reason-5" type="checkbox" value="商品佣金太低," name="reasonSelect[]" />
+					<label for="reason-5">商品佣金太低</label>
+				</div>
+				<div class="check-reason">
+					<label>备注：</label>(不通过必须写清楚理由)<br/>
+					<textarea name="reason"></textarea>
+				</div>
+				
+				<input type="submit" name="checkit" value="提交" />
+			</form>
+		</div>
+		
+		<div class="checkpro-info">
+			<div class="info">
+				<span>原价：{$pro.oprice}</span><br />
+				<span>现价:{$pro.nprice}</span><br />
+				<span>佣金：{$pro.commission_rate}%</span><br />
+				<a target="_blank" href="{$pro.link}">看一下</a>
+			</div>
+			<img src="{$pro.pic}" />
+			<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+</body>
+</html>

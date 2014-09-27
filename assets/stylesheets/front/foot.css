@@ -1,0 +1,29 @@
+@CHARSET "gbk";
+.xiai-foot-around{
+	background:url(/assets/images/front/index/background_bg.png);
+	height:75px;
+}
+
+.xiai-foot-around .tongji{
+	display:none;
+}
+.xiai-foot-around .links{
+	width:100%;
+	height:100px;
+	margin:10px auto;
+	background:#fff;
+}
+.xiai-foot-around .links .link-mark{
+	text-align:center;
+	padding-top:5px;
+}
+.xiai-foot-around .links .link a{
+	color:gray;
+	font-size:14px;
+	margin-right:10px;
+}
+.xiai-foot-around .links .link{
+	width:100%;
+	margin:10px auto;
+	text-align:center;
+}

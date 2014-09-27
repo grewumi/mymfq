@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<title>后台  - 商品采集</title>
+<link rel="stylesheet" href="/assets/stylesheets/admin/head.css" />
+<link rel="stylesheet" href="/assets/stylesheets/admin/dbselect.css" />
+</head>
+<body>
+	{if !$iscaijiuser}
+	{include file="admin/head.html"}
+	{else}
+	<p style="width:990px;margin:0 auto;text-align:right;">{if $iscaijiuser}{$iscaijiuser}{/if}<a href="/login.html?cmd=out">退出</a></p>
+	{/if}
+	<div class="admin-dbselect-around">
+		<div class="admin-dbselect">
+			<div class="dbselect-info">
+				<div class="dbselect-ctrl">
+					{if $iscaijiuser}
+				
+					<h3>采集数据一键同步</h3>
+					{if $username}
+					<a target="_blank" href="{spUrl c=admin a=postDataToUz}">{$username}</a>
+					{else}
+					<span style="color:red;">余额不足！！</span>
+					{/if}
+					
+					{elseif !$iscaijiuser}
+					<!-- <h3>采集数据一键同步</h3>
+					<a target="_blank" href="{spUrl c=admin a=postDataToUz}">一秒疯抢</a>	 -->
+					{/if}
+				</div>
+				
+				<div class="dbselect-ctrl" style="display:none;">
+					<h3 style="margin-bottom: 20px;">采集数据一键导出</h3>				
+					{foreach key=k item=v from=$website}
+						{if $k!='none'}
+							{if $v.actType!=23}
+							<a href="{spUrl c=admin a=postDataToUz type=$k}">{$v.name}</a>
+							{/if}
+						{/if}
+					{/foreach}
+				</div>
+				
+				<div class="dbselect-ctrl">
+					<h3 style="margin-bottom: 20px;">采集数据导出</h3>				
+					{foreach key=k item=v from=$website}
+						{if $k!='none'}
+							{if $v.actType!=23}
+							<a href="{spUrl c=admin a=dbselect type=$k}">{$v.name}<b>{$v.tcounts}</b></a>
+							{/if}
+						{/if}
+					{/foreach}
+				</div>
+				<div class="dbselect-ctrl">
+					<h3>导出</h3>			
+					<div class="admin-page">
+					    {if $pager}
+						    共有商品{$pager.total_count}个，共有{$pager.total_page}页（每页{$pager.page_size}个商品）：
+						    							
+							<!--只有一页数据的时候,分页数据不显示,手动构造-->
+						    <a target="_blank" href="{spUrl c=admin a=sqlout type=$type page=1}">1</a>
+						    
+						    <!--开始循环页码，同时如果循环到当前页则不显示链接-->
+						    {foreach from=$pager.all_pages item=thepage}
+						            {if $thepage != $pager.current_page}
+						            	{if $thepage<=$pager.last_page && $thepage>=$pager.current_page}
+						                	<a target="_blank" href="{spUrl c=admin a=sqlout type=$type page=$thepage}">{$thepage}</a>
+						            	{/if}									
+						            {else}
+						            	<b>{$thepage}</b>
+						            {/if}
+						    {/foreach}
+						{else}
+							共有商品{$website.$type.tcounts}个，共有 1 页 ：
+							
+							<!--只有一页数据的时候,分页数据不显示,手动构造-->
+						    <a target="_blank" href="{spUrl c=admin a=sqlout type=$type page=1}">1</a>    
+						{/if}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

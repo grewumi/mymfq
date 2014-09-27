@@ -1,0 +1,41 @@
+<div class="xiai-foot-around">
+	<script type="text/javascript">
+    (function(win,doc){
+	        var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0];
+	        if (!win.alimamatk_show) {
+	            s.charset = "gbk";
+	            s.async = true;
+	            s.src = "http://a.alimama.cn/tkapi.js";
+	            h.insertBefore(s, h.firstChild);
+	        };
+	        var o = {
+	            pid: "mm_17679372_4272520_14464686",/*推广单元ID，用于区分不同的推广渠道*/
+	            appkey: "21677073",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/
+	            unid: ""/*自定义统计字段*/
+	        };
+	        win.alimamatk_onload = win.alimamatk_onload || [];
+	        win.alimamatk_onload.push(o);
+	    })(window,document);	
+	</script>
+	<script type="text/javascript">
+		/*var imgwidth = $(".item-pic").width();
+		var itemheight = $(".item").height();
+		$("tkbox").width(imgwidth);
+		$("tkbox").height(itemheight);*/
+		function setWidth(){
+			var imgwidth = $(".item-img").width();
+			var itemheight = $(".buy").height();
+			if ($("tkbox").width() == imgwidth){
+				clearInterval(a);
+			}else{
+				$("tkbox").width(imgwidth);
+				$("tkbox").height(itemheight);
+			}
+		};
+		var a = setInterval(setWidth, 1000);
+	</script>
+	<div class="tongji">
+		<script src="http://s4.cnzz.com/z_stat.php?id=1000457719&web_id=1000457719" language="JavaScript"></script>
+	</div>	
+	
+</div>

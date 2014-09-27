@@ -1,0 +1,103 @@
+@CHARSET "gbk";
+.admin-modpro{
+	width:990px;
+	margin:0 auto;
+}
+.modpro-info{
+	padding-top:80px;
+}
+.admin-modpro {
+	width:990px;
+	margin:0 auto;
+	padding-top:15px;
+}
+.admin-modpro .mod-pic{
+	float:left;
+	margin-top:325px;
+	width:145px;
+}
+.admin-modpro .mod-pic .old-pic{
+	width:145px;
+}
+.admin-modpro .modpro-info .getVolume{
+	cursor:pointer;
+	color:blue;
+}
+.admin-modpro .modpro-info {
+	width:500px;
+	margin:25px auto;
+	float:left;
+}
+.admin-modpro .modpro-info .row {
+	width:500px;
+	margin:10px 0px;
+}
+.admin-modpro .modpro-info .shopshow{
+	/*display:none;*/
+}
+.admin-modpro .modpro-info .shopv{
+	/*display:none;*/
+}
+.admin-modpro .modpro-info .row .gengduotupian{
+	color:gray;
+}
+.admin-modpro .modpro-info .row .jiabt{
+	margin-left:5px;
+	cursor:pointer;
+	color:blue;
+}
+.admin-modpro .modpro-info .row .pro-pic-list{
+	float:left;
+	width:310px;
+}
+.admin-modpro .modpro-info .row .pro-pic-list img{
+ 	float: left;
+    width: 145px;
+    height: 145px;
+    margin: 2px;
+    border: 1px solid;
+}
+.admin-modpro .modpro-info .row .tips{
+	color:red;
+	width:200px;
+}
+.admin-modpro .modpro-info .row .rank{
+	margin-left:10px;
+}
+.admin-modpro .modpro-info .row .rank a{
+	margin: 0px 10px;
+	text-decoration:none;
+	cursor:pointer;
+}
+.admin-modpro .modpro-info .row  .btn{
+	margin-left:5px;
+}
+.admin-modpro .modpro-info span{
+	margin-left:5px;
+}
+.admin-modpro .modpro-info a{
+	text-decoration:none;
+}
+.admin-modpro .modpro-info label{
+	display:block;
+	float:left;
+	width:100px;
+}
+.admin-modpro .modpro-info input{
+	display:block;
+	float:left;
+}
+.admin-modpro .modpro-info input.long{
+	width:300px;
+}
+.admin-modpro .modpro-info textarea{
+	width:300px;
+	height:80px;
+}
+.admin-modpro .modpro-info input.short{
+	width:120px;
+}
+.admin-modpro .modinfo-pic{
+	float:right;
+	margin-top:125px;
+}

@@ -1,0 +1,31 @@
+@CHARSET "gbk";
+.clearfix{
+	clear:both;
+}
+.check-index{
+	width:990px;
+	margin:0 auto;
+	padding-top:30px;
+}
+.check-info{
+	float:left;
+}
+.check-info .check-reason{
+	font-size:12px;
+	color:red;	
+}
+.check-info .check-reason label{
+	color:gray;
+	font-size:16px;
+}
+.checkpro-info{
+	position:relative;
+	float:right;
+}
+.checkpro-info .info{
+	float:left;
+	margin-right:20px;
+}
+.checkpro-info .info img{
+	float:right;
+}

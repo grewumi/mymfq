@@ -1,0 +1,52 @@
+@CHARSET "gbk";
+*{
+	padding:0px;
+	margin:0px;
+}
+.clearfix{
+	clear:both;
+}
+.head-around{
+	background:#BF0000;padding:5px 0px;
+}
+.head-index{
+	width:100%;margin:0 auto 0 auto;height:30px;position:relative;
+}
+.head-index .logo{
+	width:30%;height:30px;background:#BF0000;float:left;
+}
+.head-index .logo img{
+	width:100%;height:100%;
+}
+.head-index .searchitem{
+	width:70%;height:30px;float:left;position:relative;
+}
+.head-index .searchitem .sbox{
+	width:80%;height:30px;/*border:#DDDDDD solid 2px;*/	border:none;
+}
+.head-index .searchitem .spress{
+	height:34px;border:none;width:20%;margin-left:-10px;background:#ee2889;color:white;
+}
+.head-nav-around,.m-head-nav-around{
+	background:#000;position:relative;
+}
+.head-nav-around .head-nav{
+	width:100%;margin:0 auto;
+}
+.head-nav-around .head-nav a{
+	display:block;width:33.33333333%;text-align:center;color:#fff;text-decoration:none;padding:5px 0px;float:left;
+}
+.head-nav-around .head-nav a.cur{
+	background:#BF0000;
+}
+/* 手机导航 */
+.m-head-nav{
+	width:50%;float:left;
+}
+.m-head-nav select{
+	width:100%;text-align:center;font-size:16px;
+}
+.m-head-nav select option{
+	text-align:center;
+}
+/* END - 手机导航 */

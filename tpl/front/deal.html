@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="gbk"?>  
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=gbk">
+<meta name="keywords" content="一秒疯抢,免费试用,九块邮,9块邮,9.9包邮,九块邮官网,9块9,9.9包邮网,9.9包邮,九块九包邮,9.9元全国包邮,九块邮独享,9块9包邮官网 ">
+<meta name="Description" content="一秒疯抢-九块邮(9块9包邮)官网,精选九块邮独家独享9.9包邮,9.9元天天特价商品,9.9元全国包邮每天更新!找最全九块九包邮商品,就上9.9包邮官网.九块邮小幸福,超低价格,超值特价秒杀惊喜不断!">
+<meta name="viewport" content="width=device-width"/> 
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>一秒疯抢  - 【九块邮】{$pro.title}</title>
+<link rel="stylesheet" href="/assets/stylesheets/front/head.css" />
+<link rel="stylesheet" href="/assets/stylesheets/front/foot.css" />
+<link rel="stylesheet" href="/assets/stylesheets/front/deal.css" />
+<script type="text/javascript"  src="/assets/Javascripts/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var imgheight = $(".item-img").width();
+	$("img#item-pic").height(imgheight);
+	$("img#item-pic").width(imgheight);
+	var titleheight = 0.10*imgheight;
+	$(".item-tit").height(titleheight);
+});
+</script>
+</head>
+<body>
+{include file="front/head.html"}
+<div class="deal-main">
+	<div class="item-deal">
+		<div class="item-img">
+			<img id="item-pic" src="{$pro.pic}" /> 
+		</div>
+		<div class="item-tit">
+			{$pro.title}
+		</div>
+		<span class="nprice">￥{$pro.nprice}</span>
+		<del class="oprice">市场价:￥{$pro.oprice}元</del>
+		<span class="buy" style="position:relative;">立即购买
+			<a class="normal" href="http://item.taobao.com/item.htm?id={$pro.iid}"></a>
+			<a data-type="0" biz-itemid="{$pro.iid}" data-tmpl="145x145" data-tmplid="1893" data-rd="2" data-style="2" data-border="0" href="http://item.taobao.com/item.htm?id={$pro.iid}"></a>
+		</span>
+	</div>
+	<div class="clearfix"></div>
+</div>
+{include file="front/foot.html"}
+</body>
+</html>

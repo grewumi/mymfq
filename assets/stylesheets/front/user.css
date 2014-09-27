@@ -1,0 +1,159 @@
+@CHARSET "gbk";
+
+body{
+	background:url(/assets/images/front/index/background_bg.png);
+}
+
+.sTips{
+	width:1080px;
+	margin:0 auto;
+	background:#F7EEA5;
+	text-align:center;
+	padding:10px 0px;
+}
+/* 用户报名页样式 */
+.user-info{
+	width:1080px;
+	margin:0 auto;
+}
+.user-info ul{
+	color:red;
+	margin:15px 0px;
+}
+.user-info ul li{
+	list-style-type:none;
+}
+.user-info .red{
+	color:red;
+}
+.user-info .blue{
+	color:blue;
+}
+/* 前台用户报名页面用户查询 */
+.user-info .user-search{
+	margin:10px auto 0px auto;
+	width:700px;
+	text-align:center;
+}
+.user-info .user-search span{
+	color:red;
+	margin-right:5px;
+}
+/* end - 前台用户报名页面用户查询 */
+.user-report .gengduotupian{
+	color:gray;
+}
+.user-report div.photo-list {
+	float:left;
+	width:310px;
+}
+.user-report div.photo-list img {
+    float: left;
+    width: 145px;
+    height: 145px;
+    margin: 2px;
+    border: 1px solid;
+}
+
+.user-report .admin-modpro .mod-info .row .tips{
+	color:red;
+	width:200px;
+}
+.user-report .admin-modpro .mod-info .row .timeTips{
+	margin-left:10px;
+}
+/* end - 用户报名页样式 */
+
+/* 后台商品修改样式 添加样式 */
+.admin-modpro {
+	width:1080px;
+	margin:0 auto;
+	padding-top:15px;
+}
+.admin-modpro .mod-pic{
+	float:left;
+	margin-top:325px;
+	width:145px;
+}
+.admin-modpro .mod-pic .old-pic{
+	width:145px;
+}
+.admin-modpro .mod-info .getVolume{
+	cursor:pointer;
+	color:blue;
+}
+.admin-modpro .mod-info {
+	width:500px;
+	margin:25px auto;
+	float:left;
+}
+.admin-modpro .mod-info .row {
+	width:500px;
+	margin:10px 0px;
+}
+.admin-modpro .mod-info .shopshow{
+	display:none;
+}
+.admin-modpro .mod-info .shopv{
+	display:none;
+}
+.admin-modpro .mod-info .row .gengduotupian{
+	color:gray;
+}
+.admin-modpro .mod-info .row .jiabt{
+	margin-left:5px;
+	cursor:pointer;
+	color:blue;
+}
+.admin-modpro .mod-info .row .pro-pic-list{
+	float:left;
+	width:310px;
+}
+.admin-modpro .mod-info .row .pro-pic-list img{
+ 	float: left;
+    width: 145px;
+    height: 145px;
+    margin: 2px;
+    border: 1px solid;
+}
+.admin-modpro .mod-info .row .tips{
+	color:red;
+	width:200px;
+}
+.admin-modpro .mod-info .row .rank{
+	margin-left:10px;
+}
+.admin-modpro .mod-info .row .rank a{
+	margin: 0px 10px;
+	text-decoration:none;
+	cursor:pointer;
+}
+.admin-modpro .mod-info .row  .btn{
+	margin-left:5px;
+}
+.admin-modpro .mod-info span{
+	margin-left:5px;
+}
+.admin-modpro .mod-info a{
+	text-decoration:none;
+}
+.admin-modpro .mod-info label{
+	display:block;
+	float:left;
+	width:80px;
+}
+.admin-modpro .mod-info input{
+	display:block;
+	float:left;
+}
+.admin-modpro .mod-info input.long{
+	width:300px;
+}
+.admin-modpro .mod-info textarea{
+	width:300px;
+	height:80px;
+}
+.admin-modpro .mod-info input.short{
+	width:80px;
+}
+/* end - 后台商品修改样式 添加样式 */
