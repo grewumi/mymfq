@@ -2,7 +2,6 @@
 /*
  * U站采集类，页面匹配商品iid及商品促销价,其余的值通过API获取 
 */
-
 class UzCaiji{
 	public $url;
 	public $items;
@@ -17,113 +16,43 @@ class UzCaiji{
 	 *  mode:操作模式,默认为直接导入数据库,值 2 为输出json格式,值3为输出新品页数
 	 */ 
 	public function Caiji($website,$page=1,$mode=1){
+                
+                if(file_exists('./include/eachptns/'.$website.'.php')){
+                    require 'eachptns/'.$website.'.php';
+                    global $contentptn,$singleptn;    
+                }
+                
+                if(!$GLOBALS['G_SP']['autocat']){
+                    require 'eachcatsurl/'.$website.'.php';
+                    global $catItemsUrl;
+                }
+                
 		if($website){
 			if($website=='huiyuangou'){ // 会员购
 				$this->url = 'http://huiyuangou.uz.taobao.com/';
 				$result = file_get_contents($this->url);
+//				echo $result;
 				
-				/* // 匹配爆款
-			    $hygptn = '/class="hyg_nav1"(.+?)nav1_check1(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)<img(.+?)src="(.+?)"(.+?)>(\d+\.?\d+)<\/b><del>(.+?)nav1_check2/is';	
-			    preg_match_all($hygptn,$result,$hygarr,PREG_SET_ORDER);
-			    //print_r($hygarr);
-				foreach($hygarr as $k => $v){
-					//$bk[] = array('iid'=>$v[4],'nprice'=>$v[10],'pic'=>$v[8]);
-					$bk[] = array('iid'=>$v[4],'nprice'=>$v[10]);
-				}
-				$huiyuangou['bk'] = $bk;
-				// end - 匹配爆款结束
-				
-				// 匹配9.9
-				$hygptn = '/class="nav4"(.+?)class="nav5"/is';
+				$hygptn = '/class="i_goodscond"(.+?)class="pagingdd/is';
 				preg_match_all($hygptn,$result,$hygarr,PREG_SET_ORDER);
-				$hygptn = '/class="hyg_goods_wk"(.+?)class="hyg_goods"(.+?)class="hyg_goods_img"(.+?)<img(.+?)src="(.+?)"(.+?)>(\d+\.?\d+)<\/b><del>(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"/is';
+			
+				$hygptn = '/<li>(.+?)class="i_zdmsginfol"(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)class="bt_price1"(.+?)<em>(\d+\.?\d+)<\/em>(.+?)<\/div>(.+?)<\/li>/is';
 				preg_match_all($hygptn,$hygarr[0][0],$hygarr1,PREG_SET_ORDER);
-				//print_r($hygarr1);
+//				print_r($hygarr1);
 				foreach($hygarr1 as $k => $v){
-					//$zq99[] = array('iid'=>$v[10],'nprice'=>$v[7],'pic'=>$v[5]);
-					$zq99[] = array('iid'=>$v[10],'nprice'=>$v[7]);
+					$hyg[] = array('iid'=>$v[4],'nprice'=>$v[8]);
 				}
-				$huiyuangou['zq99'] = $zq99;
-				// end -9.9
-				
-				// 匹配一分钟抢购
-				$hygptn = '/class="nav7"(.+?)name="nineteen"/is';
-				preg_match_all($hygptn,$result,$hygarr,PREG_SET_ORDER);
-				$hygptn = '/class="hyg_goods_wk"(.+?)class="hyg_goods"(.+?)class="hyg_goods_img"(.+?)<img(.+?)src="(.+?)"(.+?)>(\d+\.?\d+)<\/b><del>(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"/is';
-				preg_match_all($hygptn,$hygarr[0][0],$hygarr1,PREG_SET_ORDER);
-				//print_r($hygarr1);
-				foreach($hygarr1 as $k => $v){
-					//$yfzqg[] = array('iid'=>$v[10],'nprice'=>$v[7],'pic'=>$v[5]);
-					$yfzqg[] = array('iid'=>$v[10],'nprice'=>$v[7]);
-				}
-				$huiyuangou['yfzqg'] = $yfzqg;
-				//var_dump($yfzqg);
-				// end - 一分钟抢购
-				
-				// 惠品折清仓
-				$hygptn = '/class="nav9"(.+?)name="hot"/is';
-				preg_match_all($hygptn,$result,$hygarr,PREG_SET_ORDER);
-				$hygptn = '/class="hyg_goods_wk"(.+?)class="hyg_goods"(.+?)class="hyg_goods_img"(.+?)<img(.+?)src="(.+?)"(.+?)>(\d+\.?\d+)<\/b><del>(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"/is';
-				preg_match_all($hygptn,$hygarr[0][0],$hygarr1,PREG_SET_ORDER);
-				//print_r($hygarr1);
-				foreach($hygarr1 as $k => $v){
-					//$hpzqc[] = array('iid'=>$v[10],'nprice'=>$v[7],'pic'=>$v[5]);
-					$hpzqc[] = array('iid'=>$v[10],'nprice'=>$v[7]);
-				}
-				$huiyuangou['hpzqc'] = $hpzqc;
-				// end - 惠品折清仓
-				
-				// 限时抢购
-				$hygptn = '/class="nav11"(.+?)name="brand"/is';
-				preg_match_all($hygptn,$result,$hygarr,PREG_SET_ORDER);
-				$hygptn = '/class="hyg_goods_wk"(.+?)class="hyg_goods"(.+?)class="hyg_goods_img"(.+?)<img(.+?)src="(.+?)"(.+?)>(\d+\.?\d+)<\/b><del>(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"/is';
-				preg_match_all($hygptn,$hygarr[0][0],$hygarr1,PREG_SET_ORDER);
-				foreach($hygarr1 as $k => $v){
-					//$xsqg[] = array('iid'=>$v[10],'nprice'=>$v[7],'pic'=>$v[5]);
-					$xsqg[] = array('iid'=>$v[10],'nprice'=>$v[7]);
-				}
-				$huiyuangou['xsqg'] = $xsqg;
-				// end - 限时抢购  */
-				
-				$hygptn = '/class="b6hyg_today"(.+?)class="b6hyg_index_next"/is';
-				preg_match_all($hygptn,$result,$hygarr,PREG_SET_ORDER);
-				$jxspR = $hygarr[0][0];
-				
-				$hygarr = null;
-				$hygptn = '/class="b6hyg_today b6hyg_tdzp"(.+?)name="hotbrand"/is';
-				preg_match_all($hygptn,$result,$hygarr,PREG_SET_ORDER);
-				$tdzpR = $hygarr[0][0];
-				
-				$hygarr = null;
-				// 精选商品
-				$hygptn = '/class="b6today_goods"(.+?)class="b6zk_bk(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)<img(.+?)data-ks-lazyload="(.+?)"(.+?)class="b6b1">(.+?)(\d+\.?\d+)(.+?)class="b6b2"/is';
-				preg_match_all($hygptn,$jxspR,$hygarr,PREG_SET_ORDER);
-				foreach($hygarr as $k => $v){
-					$jxsp[] = array('iid'=>$v[4],'nprice'=>$v[11],'pic'=>$v[8]);
-				}
-				$huiyuangou['jxsp'] = $jxsp;
-				// END - 精选商品
-				
-				$hygarr = null;
-				// 精品热卖
-				$hygptn = '/class="b6today_goods"(.+?)class="b6zk_bk(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)<img(.+?)data-ks-lazyload="(.+?)"(.+?)class="b6b1">(.+?)(\d+\.?\d+)(.+?)class="b6b2"/is';
-				preg_match_all($hygptn,$tdzpR,$hygarr,PREG_SET_ORDER);
-				//print_r($hygarr);
-				foreach($hygarr as $k => $v){
-					$tdzp[] = array('iid'=>$v[4],'nprice'=>$v[11],'pic'=>$v[8]);
-				}
-				$huiyuangou['tdzp'] = $tdzp;
-				// END - 精品热卖
-				
-				//var_dump($huiyuangou);
+				$huiyuangou['sy'] = $hyg;
+//				var_dump($huiyuangou);
 				$this->items = $huiyuangou;
 				if($mode==2)
 					echo json_encode($this->items);
-			}elseif($website=='jiukuaiyou'){ // 九块邮	
+			}elseif($website=='jiukuaiyou'){ // 九块邮
+
 				if($mode==3){ // 返回要采集的页数,九块邮新品为45个一页
 					$this->url = 'http://jiukuaiyoucom.uz.taobao.com/';
 					$result = file_get_contents($this->url);
-					
+				                                      
 					$ptn = '/<div class="head"(.+?)class="main"/is';
 					preg_match_all($ptn,$result,$jiuarr,PREG_SET_ORDER);
 					//print_r($jiuarr);
@@ -139,27 +68,41 @@ class UzCaiji{
 					}else{
 						return false;
 					}
-				}else{			
-					$this->url = 'http://jiukuaiyoucom.uz.taobao.com/d/jiu?u=xinpin/'.$page;
-					//echo $this->url;
-					$result = file_get_contents($this->url);
-					
-					// 匹配商品内容
-					$ptn = '/<div class="main"(.+?)class="page"/is';
-					preg_match_all($ptn,$result,$jiuarr,PREG_SET_ORDER);
-					//print_r($jiuarr);
-					
-					// 匹配单个商品内容
-					$ptn = '/<li(.+?)class="pic-img(.+?)src="(.+?)"(.+?)class="price-current"(.+?)<\/em>(\d+\.?\d+)<\/span>(.+?)class="btn-new  buy(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)<\/li>/is';
-					preg_match_all($ptn,$jiuarr[0][0],$jiuarr1,PREG_SET_ORDER);
-					//print_r($jiuarr1);
-					
-					foreach($jiuarr1 as $k => $v){
-						$jiuarr2[] = array('iid'=>$v[10],'nprice'=>$v[6]);
-					}
-					$jiukuaiyou['page'.$page] = $jiuarr2;	
+				}else{
+                                        if($GLOBALS['G_SP']['autocat']) //自动分类
+                                            $catItemsUrl = 'http://jiukuaiyoucom.uz.taobao.com/?m=index&cat=all&ltype=1&page='.$page;
+                                        
+                                        if(is_array($catItemsUrl)){// 非自动分类
+                                            
+                                            foreach($catItemsUrl as $cat=>$url){
+                                                
+                                                $result = file_get_contents($url);
+                                                
+                                                $content = getcaijicontent($result,$contentptn,$singleptn);
+                                                  
+                                                foreach($content as $k => $v){
+                                                    $jiuarr2[] = array('iid'=>$v[7],'nprice'=>$v[3],'cat'=>$cat);
+                                                }
+                                                
+                                                
+                                                $jiukuaiyou['cat'.$cat] = $jiuarr2;
+                                                $jiuarr2 = null;
+                                                $result = null;
+                                                $content = null;
+                                            }
+                                        }else{
+                                            
+                                            $result = file_get_contents($catItemsUrl);
+                                            					
+                                            $content = getcaijicontent($result,$contentptn,$singleptn);
 
-					//var_dump($jiukuaiyou);
+                                            foreach($content as $k => $v){
+                                                    $jiuarr2[] = array('iid'=>$v[7],'nprice'=>$v[3]);
+                                            }
+                                            $jiukuaiyou['page'.$page] = $jiuarr2;
+                                        }
+					
+//                                        var_dump($jiukuaiyou);
 					$this->items = $jiukuaiyou;
 					
 					if($mode==2)
@@ -226,9 +169,12 @@ class UzCaiji{
 			}elseif($website=='vipgouyouhui'){ // VIP购优惠
 				$this->url = 'http://vipgouyouhui.uz.taobao.com/';
 				$result = file_get_contents($this->url);
-				$gyhptn = '/class="zhuanbao"(.+?)class="ad"/is';
+				$gyhptn = '/class="Container"(.+?)class="indexcontent"(.+?)class="banner"(.+?)class="banner_list"(.+?)<\/div>(.+?)VIP专享(.+?)>(\d+\.?\d+)<\/span>(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)style="clear:both;"/is';
 				preg_match_all($gyhptn,$result,$gyharr,PREG_SET_ORDER);
-				$zbR = $gyharr[0][0];
+				foreach($gyharr as $k => $v){
+					$bk[] = array('iid'=>$v[10],'nprice'=>$v[7]);//爆款
+				}
+				$vipgouyouhui['bk'] = $bk;
 				
 				$gyharr = null;
 				// 性价速购
@@ -236,34 +182,34 @@ class UzCaiji{
 				preg_match_all($xjsgptn,$result,$xjsgarr,PREG_SET_ORDER);
 				$xjsgResult = $xjsgarr[0][0];
 				$xsqgResult = $xjsgarr[1][0];// 限时抢购
-				//echo $xjsgResult;
-				$xjsgptn = '/<li(.+?)原价(.+?)href="(.+?)[?,]id=(\d+)(.+?)"(.+?)<img(.+?)src="(.+?)"(.+?)<div(.+?)class="jiage"(.+?)>(\d+\.?\d+)<\/span(.+?)<\/li>/is';
+//				echo $xsqgResult;
+				$xjsgptn = '/<li(.+?)class="shoptitle"(.+?)class="newcxj">(.+?)>(\d+\.?\d+)<\/span>(.+?)style="float:right;"(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)<\/li>/is';
 				preg_match_all($xjsgptn,$xjsgResult,$xjsgarr1,PREG_SET_ORDER);
-				//print_r($xjsgarr1);
+//				print_r($xjsgarr1);
 				foreach($xjsgarr1 as $k => $v){
-					$xjsg[] = array('iid'=>$v[4],'nprice'=>$v[12],'pic'=>$v[8]);
+					$xjsg[] = array('iid'=>$v[8],'nprice'=>$v[4]);//,'pic'=>$v[8]
 				}
 				$vipgouyouhui['xjsg'] = $xjsg;
 				// end - 性价速购
 				
 				// 限时抢购
-				$xsqgptn = '/<li(.+?)原价(.+?)href="(.+?)[?,]id=(\d+)(.+?)"(.+?)<img(.+?)src="(.+?)"(.+?)<div(.+?)class="jiage"(.+?)>(\d+\.?\d+)<\/span(.+?)<\/li>/is';
+				$xsqgptn = '/<li(.+?)class="shoptitle"(.+?)class="newcxj">(.+?)>(\d+\.?\d+)<\/span>(.+?)style="float:right;"(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)<\/li>/is';
 				preg_match_all($xsqgptn,$xsqgResult,$xsqgarr,PREG_SET_ORDER);
-				//print_r($xsqgarr);
+//				print_r($xsqgarr);
 				foreach($xsqgarr as $k => $v){
-					$xsqg[] = array('iid'=>$v[4],'nprice'=>$v[12],'pic'=>$v[8]);
+					$xsqg[] = array('iid'=>$v[8],'nprice'=>$v[4]);//,'pic'=>$v[8]
 				}
 				$vipgouyouhui['xsqg'] = $xsqg;
 				// end- 限时速购
 				
 				// 赚宝
-				$gyhptn = '/class="imgs"(.+?)<a(.+?)href="(.+?)[?,]id=(\d+)(.+?)"(.+?)<img(.+?)src="(.+?)"(.+?)￥(.+?)<b>(\d+\.?\d+)<\/b>/is';
-				preg_match_all($gyhptn,$zbR,$gyharr,PREG_SET_ORDER);
-				//print_r($gyharr);
-				foreach($gyharr as $k => $v){
-					$zb[] = array('iid'=>$v[4],'nprice'=>$v[11],'pic'=>$v[8]);
-				}
-				$vipgouyouhui['zb'] = $zb;
+//				$gyhptn = '/class="imgs"(.+?)<a(.+?)href="(.+?)[?,]id=(\d+)(.+?)"(.+?)<img(.+?)src="(.+?)"(.+?)￥(.+?)<b>(\d+\.?\d+)<\/b>/is';
+//				preg_match_all($gyhptn,$zbR,$gyharr,PREG_SET_ORDER);
+//				//print_r($gyharr);
+//				foreach($gyharr as $k => $v){
+//					$zb[] = array('iid'=>$v[4],'nprice'=>$v[11]);//,'pic'=>$v[8]
+//				}
+//				$vipgouyouhui['zb'] = $zb;
 				// END - 赚宝
 				
 				
@@ -272,16 +218,17 @@ class UzCaiji{
 				preg_match_all($bkrmptn,$result,$bkrmarr,PREG_SET_ORDER);
 				$bkrmResult = $bkrmarr[0][0];
 				//print_r($bkrmResult);
-				$bkrmptn = '/<li(.+?)<img(.+?)src="(.+?)"(.+?)专享价(.+?)<b>(\d+\.?\d+)<\/b>(.+?)<a(.+?)href="(.+?)[?,]id=(\d+)(.+?)"(.+?)<img(.+?)<\/li>/is';
+//				echo $bkrmResult;
+				$bkrmptn = '/<li(.+?)class="newcxj">(.+?)>(\d+\.?\d+)<\/span>(.+?)style="float:right;(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)style="clear:both;"(.+?)<\/li>/is';
 				preg_match_all($bkrmptn,$bkrmResult,$bkrmarr1,PREG_SET_ORDER);
-				//print_r($bkrmarr1);
+//				print_r($bkrmarr1);
 				foreach($bkrmarr1 as $k => $v){
-					$bkrm[] = array('iid'=>$v[10],'nprice'=>$v[6],'pic'=>$v[3]);
+					$bkrm[] = array('iid'=>$v[7],'nprice'=>$v[3]);//,'pic'=>$v[3]
 				}
 				$vipgouyouhui['bkrm'] = $bkrm;
 				// end - 爆款热卖
 			
-				//var_dump($vipgouyouhui);
+//				var_dump($vipgouyouhui);
 				$this->items = $vipgouyouhui;
 				if($mode==2)
 					echo json_encode($this->items);
@@ -307,21 +254,21 @@ class UzCaiji{
 						return false;
 					}
 				}else{				
-					$this->url = 'http://juanpi.uz.taobao.com/d/index?u=index/all/all/'.$page;
+					$this->url = 'http://juanpi.uz.taobao.com/?m=index&cat=all&ltype=1&page='.$page;
 					$result = file_get_contents($this->url);
 					//echo $result;
 					// 匹配商品内容
-					$ptn = '/<div class="main(.+?)class="page"/is';
+					$ptn = '/class="zhe-main"(.+?)class="page"/is';
 					preg_match_all($ptn,$result,$jiuarr,PREG_SET_ORDER);
 					//print_r($jiuarr[0][0]);
 					
 					// 匹配单个商品内容
-					$ptn = '/<li(.+?)class="pic-img(.+?)<img(.+?)src="(.+?)"(.+?)class="price-current"(.+?)<\/em>(\d+\.?\d+)<\/span>(.+?)class="btn buy(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)<\/li>/is';
+					$ptn = '/<li(.+?)class="price-current"(.+?)<\/em>(\d+\.?\d+)<\/span>(.+?)class="btn(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)<\/li>/is';
 					preg_match_all($ptn,$jiuarr[0][0],$jiuarr1,PREG_SET_ORDER);
 					//print_r($jiuarr1);
 					
 					foreach($jiuarr1 as $k => $v){
-						$jiuarr2[] = array('iid'=>$v[11],'nprice'=>$v[7]);
+						$jiuarr2[] = array('iid'=>$v[7],'nprice'=>$v[3]);
 					}
 					$jiukuaiyou['page'.$page] = $jiuarr2;	
 						
@@ -420,17 +367,17 @@ class UzCaiji{
 				$this->url = 'http://tealife.uz.taobao.com/';
 				$result = file_get_contents($this->url);
 				// 精品推荐
-				$teaptn = '/class="goods_item"(.+?)class="goods_img"(.+?)<img(.+?)data-ks-lazyload="(.+?)"(.+?)class="goods_name"(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)class="price_sales"(.+?)class="promo_price(.+?)class="integer">(\d+)<\/em>/is';
+				$teaptn = '/class="col-md-3(.+?)class="pull-left(.+?)class="front-spt"(.+?)<\/i>(.+?)<\/div>(.+?)class="btn-purchase(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)/is';
 				preg_match_all($teaptn,$result,$teaarr,PREG_SET_ORDER);
-				//print_r($teaarr);
+//				print_r($teaarr);
 				foreach($teaarr as $k => $v){
-					$bk[] = array('iid'=>$v[8],'nprice'=>$v[13],'pic'=>$v[4]);
+					$bk[] = array('iid'=>trim($v[8]),'nprice'=>trim($v[4]));//,'pic'=>$v[4]
 				}
 				$tealife['bk'] = $bk;
-				//var_dump($bk);
+//				var_dump($bk);
 				// end - 精品推荐
 				
-				//var_dump($tealife);
+//				var_dump($tealife);
 				$this->items = $tealife;
 				//var_dump($this->items);
 				if($mode==2)
@@ -438,14 +385,13 @@ class UzCaiji{
 			}elseif($website=='taofen8'){ // 外站  淘粉吧
 				$this->url = 'http://www.taofen8.com/';
 				$result = file_get_contents($this->url);
-				$tf8ptn = '/class="tf8_sp"(.+?)class="tf8_pagediv"/is';
+				$tf8ptn = '/class="tf8_sp-1"(.+?)class="tf8_pagediv-1"/is';
 				preg_match_all($tf8ptn,$result,$tf8arr,PREG_SET_ORDER);
-				//print_r($tf8arr);
-				$tf8ptn = '/<li(.+?)itemid(.+?)(\d+)(.+?)pic(.+?)"(.+?)"(.+?)c(.+?)price(.+?)(\d+\.?\d+)(.+?)>/is';
+				$tf8ptn = '/<li(.+?)class="tf8_spimg-1"(.+?)name="url_(\d+)"(.+?)class="tf8_shop"(.+?)class="tf8-index-d2"(.+?)class="tf8-d2-span2">(\d+\.?\d+)<\/span>(.+?)class="tf8-d2-span3"/is';
 				preg_match_all($tf8ptn,$tf8arr[0][0],$tf8arr1,PREG_SET_ORDER);
 				//print_r($tf8arr1);
 				foreach($tf8arr1 as $k => $v){
-					$tf8zx[] = array('iid'=>$v[3],'nprice'=>$v[10],'pic'=>$v[6]);
+					$tf8zx[] = array('iid'=>$v[3],'nprice'=>$v[7]);//,'pic'=>$v[6]
 				}
 				$tf8['tf8zx'] = $tf8zx;
 				//var_dump($tf8);
@@ -665,52 +611,33 @@ class UzCaiji{
 				if($mode==2)
 					echo json_encode($this->items);
 			}elseif($website=='mmrizhi'){
-				$this->url = 'http://mmrizhi.uz.taobao.com/view/front/list.php?page='.$page;
+				$this->url = 'http://www.mmgou.org/item.php';
 				$result = file_get_contents($this->url);
-				$mmrzptn = '/class="container(.+?)class="recpro_list"(.+?)class="block70"/is';
+				$mmrzptn = '/<tr>(.+?)<td(.+?)id="img">(.+?)<\/td>(.+?)<td(.+?)id="tejia">(.+?)<\/td>(.+?)<td(.+?)id="iid">(.+?)<\/td>(.+?)<\/tr>/is';
 				preg_match_all($mmrzptn,$result,$mmrzarr,PREG_SET_ORDER);
-				$pageR = $mmrzarr[0][2];
-				
-				$mmrzarr = null;
-				$mmrzptn = '/class="proList"(.+?)class="p"(.+?)class="pic_c"(.+?)<a(.+?)class="edit"(.+?)<\/div>(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)<img(.+?)data-ks-lazyload="(.+?)"(.+?)class="price_list_sale"(.+?)<em>(\d+\.?\d+)<\/em>/is';
-				preg_match_all($mmrzptn,$pageR,$mmrzarr,PREG_SET_ORDER);
 				//print_r($mmrzarr);
 				foreach($mmrzarr as $k => $v){
-					$allsp[] = array('iid'=>$v[8],'nprice'=>$v[15],'pic'=>$v[12]);
+					$allsp[] = array('iid'=>$v[9],'nprice'=>$v[6],'pic'=>$v[3]);
 				}
-				$mmrizhi['page'.$page] = $allsp; 
+				
+				$mmrizhi['all'] = $allsp; 
 				//var_dump($mmrizhi);
 				$this->items = $mmrizhi;
 				if($mode==2)
 					echo json_encode($this->items);
 			}elseif($website=='yuansu'){
-				$this->url = 'http://yuansu.uz.taobao.com';
+				$this->url = 'http://yuansu.uz.taobao.com/view/baohuasuan.php';
 				$result = file_get_contents($this->url);
-				$yuansuptn = '/class="lff-con(.+?)first"(.+?)class="floor-item(.+?)class="clear"/is';
+				$yuansuptn = '/<table(.+?)class="img">(.+?)<\/td>(.+?)class="tejia">(.+?)<\/td>(.+?)class="iid">(.+?)<\/td>(.+?)<\/table>/is';
 				preg_match_all($yuansuptn,$result,$yuansuarr,PREG_SET_ORDER);
-				$yfzqgR = $yuansuarr[0][3];
-				$bkjpR = $yuansuarr[1][3];
 				
-				$yuansuarr = null;
-				// 一分钟抢光
-				$yuansuptn = '/class="img"(.+?)<a(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)<img(.+?)src="(.+?)"(.+?)class="price"(.+?)<\/font>(\d+\.?\d+)(.+?)<\/div>/is';
-				preg_match_all($yuansuptn,$yfzqgR,$yuansuarr,PREG_SET_ORDER);
-				//print_r($yuansuarr);
+				//var_dump($yuansuarr);
 				foreach($yuansuarr as $k => $v){
-					$yfzqg[] = array('iid'=>$v[4],'nprice'=>$v[11],'pic'=>preg_replace('/_210x210.jpg/i','_310x310.jpg',$v[8]));
+					$bkjp[] = array('iid'=>$v[6],'nprice'=>$v[4],'pic'=>$v[2]);//,'pic'=>preg_replace('/_210x210.jpg/i','_310x310.jpg',$v[8])
 				}
-				$yuansu['yfzqg'] = $yfzqg;
-				// END - 一分钟抢光
-				
-				$yuansuarr = null;
-				// 爆款精品
-				$yuansuptn = '/class="img"(.+?)<a(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)<img(.+?)src="(.+?)"(.+?)class="price"(.+?)<\/font>(\d+\.?\d+)(.+?)<\/div>/is';
-				preg_match_all($yuansuptn,$bkjpR,$yuansuarr,PREG_SET_ORDER);
-				//print_r($yuansuarr);
-				foreach($yuansuarr as $k => $v){
-					$bkjp[] = array('iid'=>$v[4],'nprice'=>$v[11],'pic'=>preg_replace('/_210x210.jpg/i','_310x310.jpg',$v[8]));
-				}
-				$yuansu['bkjp'] = $bkjp; 
+				$bkjp1 = array_chunk($bkjp,12);
+				$bkjq2 = $bkjp1[0];
+				$yuansu['all'] = $bkjq2; 
 				// END - 爆款精品
 				
 				//var_dump($yuansu);
@@ -828,6 +755,41 @@ class UzCaiji{
 				$this->items = $sylm;
 				if($mode==2)
 					echo json_encode($this->items);
+			}elseif($website=='zhekouba'){
+				$this->url = 'http://www.432gou.com/?c=main&a=outzs';
+				$result = file_get_contents($this->url);
+				$zhekouba = json_decode($result,true);
+				//var_dump($zhekouba);
+				$this->items = $zhekouba;
+				if($mode==2)
+					echo json_encode($this->items);
+				
+			}elseif($website=='aitaoba'){
+				$this->url = 'http://aitaoba.uz.taobao.com';
+				$result = file_get_contents($this->url);
+				$atbptn = '/class="show1"(.+?)class="good-title"(.+?)href="(.+?)[?,&,]id=(\d+)(.*?)"(.+?)class="price-current"(.+?)<\/em>(.+?)<\/span>(.+?)<\/li>/is';
+				preg_match_all($atbptn,$result,$atbarr,PREG_SET_ORDER);
+				foreach($atbarr as $k => $v){
+					$atb[] = array('iid'=>$v[4],'nprice'=>$v[8]);
+				}
+				$atbcj['all'] = $atb;
+				$this->items = $atbcj;
+				if($mode==2)
+					echo json_encode($this->items);
+			}elseif($website=='bujie'){
+				$this->url = 'http://www.bujie.com/api/bujie';
+				$result = file_get_contents($this->url);
+				$ptn = '/<item><num_iid>(\d+)<\/num_iid>(.+?)<coupon_price>(\d+\.?\d+)<\/coupon_price>(.+?)<pic_url>(.+?)<\/pic_url>(.+?)<\/item>/is';
+				preg_match_all($ptn,$result,$arr,PREG_SET_ORDER);
+				foreach($arr as $k => $v){
+					$bj[] = array('iid'=>$v[1],'nprice'=>$v[3],'pic'=>$v[5]);
+				}
+				$bujie['all'] = $bj;
+//				var_dump($bujie);
+				$this->items = $bujie;
+				if($mode==2)
+					echo json_encode($this->items);
+				
 			}
 			
 		}
