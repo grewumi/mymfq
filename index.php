@@ -1,7 +1,7 @@
 <?php
 define("SP_PATH",dirname(__FILE__).'/SpeedPHP');
 define("APP_PATH",dirname(__FILE__));
-define('LOCALDEVELOP',true);
+define('LOCALDEVELOP',false);
 date_default_timezone_set('Asia/Shanghai');
 if(LOCALDEVELOP){
     $dbpasswd = '';
