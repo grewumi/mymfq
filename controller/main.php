@@ -136,7 +136,7 @@ class main extends spController{
 			$itemsTemp[$i]['nprice_tail'] = $temp_npriceTail[1];
 		}	
 		
-		//var_dump($itemsTemp);
+//		var_dump($itemsTemp);
 		$itemList = $itemsTemp;
 		
 		$smarty = $this->getView();

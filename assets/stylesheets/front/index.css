@@ -30,7 +30,7 @@ body{
 
 }
 .item-list .item-row{
-	margin:3px 10px 5px 3px;float:left;width:46%;/* width:278px; */
+	/*margin:3px 10px 5px 3px;float:left; width:278px; */
 }
 .item-list .row-left{
 	margin-left:0px;width:46%;
@@ -39,7 +39,7 @@ body{
 	margin-right:0px;width:46%;
 }
 .item-list .item{
-	background:#fff;margin:8px auto;border:solid 3px #EDF1ED;position:relative;width:100%;
+	background:#fff;margin:8px auto;border:solid 3px #EDF1ED;position:relative;width: 48%;float: left;
 }
 .item-list .item:hover{
 	border:solid 3px #FF3366;

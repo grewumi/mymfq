@@ -8,9 +8,8 @@
 			<div class="clearfix"></div>
 		</div>
 		<div class="item-list">
-			{foreach key=k item=iv from=$items}
-			<div class="item-row {if $k==0}row-left{elseif $k==3}row-right{/if}">
-				{foreach key=k item=v from=$iv}
+			<div class="item-row">
+				{foreach key=k item=v from=$items}
 				<div class="item" style="display:block;">
 					{if $admin}
 					<div class="admin-edit">
@@ -38,7 +37,6 @@
 				</div>
 				{/foreach}
 			</div>
-			{/foreach}
 			<div class="clearfix"></div>
 		</div>
 		<div class="xiai-page">
