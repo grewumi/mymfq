@@ -4,7 +4,7 @@
 	margin:0 auto;
 }
 .pro-info{
-	padding-top:80px;
+/*	padding-top:80px;*/
 }
 .pro-info ul{
 	list-style-type:none; 
@@ -45,11 +45,15 @@
 	padding:5px 0px;
 }
 .pro-ctrl{
-	padding-top:30px;
-	width:990px;
-	margin:0 auto;
+	margin:2% auto;
 	position:relative;
+}
+.pro-ctrl a{
+    width:20%;
 }
 .pro-ctrl a,form{
 	display:inline-block;
+}
+.pro-ctrl form{
+    margin: 3%;
 }
