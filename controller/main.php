@@ -8,23 +8,23 @@ class main extends spController{
                 
                 $this->procats = spClass("m_procat")->findAll('isshow=1','type asc');
                 
-		$is_pc = strpos($agent,'windows nt') ? true : false;
-		$is_iphone = strpos($agent,'iphone') ? true : false;
-		$is_ipad = strpos($agent,'ipad') ? true : false;
-		$is_android = strpos($agent,'android') ? true : false;
-//                var_dump();
-		if($is_pc){
-			;
-		}
-		if($is_iphone){
-			header("Location:http://".$_SERVER['HTTP_HOST'].$_SERVER[REQUEST_URI]);
-		}
-		if($is_ipad){
-			header("Location:http://".$_SERVER['HTTP_HOST'].$_SERVER[REQUEST_URI]);
-		}
-		if($is_android){
-			header("Location:http://".$_SERVER['HTTP_HOST'].$_SERVER[REQUEST_URI]);
-		}
+//		$is_pc = strpos($agent,'windows nt') ? true : false;
+//		$is_iphone = strpos($agent,'iphone') ? true : false;
+//		$is_ipad = strpos($agent,'ipad') ? true : false;
+//		$is_android = strpos($agent,'android') ? true : false;
+////                var_dump();
+//		if($is_pc){
+//			;
+//		}
+//		if($is_iphone){
+//			header("Location:http://".$_SERVER['HTTP_HOST'].$_SERVER[REQUEST_URI]);
+//		}
+//		if($is_ipad){
+//			header("Location:http://".$_SERVER['HTTP_HOST'].$_SERVER[REQUEST_URI]);
+//		}
+//		if($is_android){
+//			header("Location:http://".$_SERVER['HTTP_HOST'].$_SERVER[REQUEST_URI]);
+//		}
 		
 	}
 	public function view(){
