@@ -8,15 +8,17 @@
 <link rel="stylesheet" href="/assets/stylesheets/admin/login.css" />
 </head>
 <body>
+        <div  data-role="header">
+            <h1>后台管理</h1>
+        </div>
 	<div class="admin-login-around">
 		<div class="admin-login">
 			<div class="login-info">
 				<div class="login-window">
-					<h3>管理后台</h3>
 					<div class="login">
 						<form  action="{spUrl c=admin a=login}" method=POST>
-							<input name="username"/>
-							<input name="password" type="password"/>
+							<input name="username" placeholder="帐号：" />
+							<input name="password" placeholder="密码：" type="password"  />
 							<input type="submit" value="登录" />
 						</form>
 					</div>
