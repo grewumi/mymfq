@@ -2,3 +2,14 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+<script>
+$( document ).on( "swipeleft", "#demo-page", function( e ) {
+    if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) {
+        if ( e.type === "swipeleft" ) {
+            $( "#right-panel" ).panel( "open" );
+        } else if ( e.type === "swiperight" ) {
+            $( "#left-panel" ).panel( "open" );
+        }
+    }
+});
+</script>

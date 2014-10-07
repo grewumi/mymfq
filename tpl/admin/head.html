@@ -1,14 +1,20 @@
 <div  data-role="header">
     <h1>后台管理</h1>
+    <a style="background-color:#A5A5A5;" role="button" data-role="button" href="#left-panel" data-icon="carat-r" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon ui-link ui-btn-left ui-btn ui-icon-carat-r ui-btn-icon-notext ui-corner-all">Open left panel</a>
 </div>
-<ul data-role="listview">
-    <li><a href="/admin.html" {if $indexCur}class="cur"{/if}>管理首页</a></li>
-    <li><a href="/pro.html" {if $proCur}class="cur"{/if}>商品管理</a></li>
-    <li><a href="/proget.html" {if $progetCur}class="cur"{/if}>商品采集</a></li>
-    <li><a href="/dbselect.html" {if $dbselectCur}class="cur"{/if}>数据导出</a></li>
-    <li><a href="/tkreport.html" {if $tkreportCur}class="cur"{/if}>淘客报表</a></li>
-    <li><a href="/yonghu.html" {if $yonghuCur}class="cur"{/if}>用户管理</a></li>
-    <li><a href="/link.html" {if $linkCur}class="cur"{/if}>友链管理</a></li>
-    <li><a href="/ad.html" {if $adCur}class="cur"{/if}>广告管理</a></li>
-    <li><a href="/login.html?cmd=out">退出</a></li>
-</ul>
+<div id="demo-page">
+    <div data-role="panel" id="left-panel" data-theme="b">
+        <ul data-role="listview">
+            <li><a href="/admin.html" {if $indexCur}class="cur"{/if}>管理首页</a></li>
+            <li><a href="/pro.html" {if $proCur}class="cur"{/if}>商品管理</a></li>
+            <li><a href="/proget.html" {if $progetCur}class="cur"{/if}>商品采集</a></li>
+            <li><a href="/dbselect.html" {if $dbselectCur}class="cur"{/if}>数据导出</a></li>
+            <li><a href="/tkreport.html" {if $tkreportCur}class="cur"{/if}>淘客报表</a></li>
+            <li><a href="/yonghu.html" {if $yonghuCur}class="cur"{/if}>用户管理</a></li>
+            <li><a href="/link.html" {if $linkCur}class="cur"{/if}>友链管理</a></li>
+            <li><a href="/ad.html" {if $adCur}class="cur"{/if}>广告管理</a></li>
+            <li><a href="/login.html?cmd=out">退出</a></li>
+        </ul>
+        <a href="#" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-mini ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-right">Close</a>
+    </div>
+</div>
