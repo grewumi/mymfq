@@ -13,9 +13,9 @@
 	<div class="admin-index-around">
 		<div class="admin-index">
 			<div class="index-info">
-				<strong>商品总数:<b class="red">{$allPros}</b>(未过期)</strong>
-				<strong>今日上新:<b class="blue">{$todayPros}</b></strong>
-				<strong>过期商品:{if $guoqis}<b class="red" style="margin-right:18px;">{$guoqis}</b><a href="{spUrl c=admin a=delgq}">删除</a>{/if}</strong>
+				<h1><strong>商品总数:<b style="color:red;">{$allPros}</b>(未过期)</strong></h1>
+                                <h1><strong>今日上新:<b style="blue;">{$todayPros}</b></strong></h1>
+				<h1><strong>过期商品:{if $guoqis}<b style="margin-right:18px;color:red;">{$guoqis}</b><a href="{spUrl c=admin a=delgq}">删除</a>{/if}</strong></h1>
 				
 			</div>
 		</div>
