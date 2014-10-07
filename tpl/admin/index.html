@@ -4,22 +4,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk">
 <title>后台  - 管理首页</title>
-<link rel="stylesheet" href="/assets/stylesheets/admin/head.css" />
-<link rel="stylesheet" href="/assets/stylesheets/admin/index.css" />
 {include file="common/jsandcsslink.html"}
 </head>
 <body>
+    <div data-role="page">
 	{include file="admin/head.html"}
-	<div class="admin-index-around">
-		<div class="admin-index">
-			<div class="index-info">
-				<h1><strong>商品总数:<b style="color:red;">{$allPros}</b>(未过期)</strong></h1>
-                                <h1><strong>今日上新:<b style="blue;">{$todayPros}</b></strong></h1>
-				<h1><strong>过期商品:{if $guoqis}<b style="margin-right:18px;color:red;">{$guoqis}</b><a href="{spUrl c=admin a=delgq}">删除</a>{/if}</strong></h1>
-				
-			</div>
-		</div>
-	</div>
-        <div class="clearfix"></div>
+        <h1><strong>商品总数:<b style="color:red;">{$allPros}</b>(未过期)</strong></h1>
+        <h1><strong>今日上新:<b style="blue;">{$todayPros}</b></strong></h1>
+        <h1><strong>过期商品:{if $guoqis}<b style="margin-right:18px;color:red;">{$guoqis}</b><a href="{spUrl c=admin a=delgq}">删除</a>{/if}</strong></h1>
+    </div>
 </body>
 </html>
