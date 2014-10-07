@@ -25,6 +25,6 @@
 .admin-head-around{
      position:relative;margin-bottom:2%;
 }
-body .ui-panel-wrapper{
+.ui-page .ui-panel-wrapper{
     min-height:0px;
 }
