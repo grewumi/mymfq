@@ -7,17 +7,36 @@
 {include file="common/jsandcsslink.html"}
 </head>
 <body>
+    <div data-role="page">   
 	{include file="admin/head.html"}
-	<div class="pro-ctrl">
-		<a href="{spUrl c=admin a=pro type=87}">明日预告</a>
-		<a href="{spUrl c=admin a=pro sh=no}">未审核</a>
-		<a href="{spUrl c=admin a=pro sh=ck2}">未通过</a>
-		<a href="{spUrl c=admin a=addpro}">添加商品</a>
+
+        <div class="pro-ctrl">
 		<form action="{spUrl c=admin a=pro}" method="post">
 			<input name="q"/>
 			<input type="submit" value="搜索"/>
 		</form>
 	</div>
+        <table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke">
+            <tbody>
+              {foreach key=k item=v from=$items}
+              <tr>
+                <th>{$v.rank}</th>
+                <th><img style="width:80px;height:80px;" src="{$v.pic}" /></th>
+                <td>
+                    <a href="{$v.link}" data-rel="external" style="font-size:0.8em;">{$v.title|truncate:39:""}</a>
+                    <span style="font-size:1.4em;color:red;">{$v.nprice}</span>
+                    <span style="font-size:0.8em;color:gray;">{$v.oprice}</span>
+                    {$v.commission_rate}%
+                </td>
+                <td>
+                    <span><a href="{spUrl c=admin a=delpro id=$v.id}">删除</a></span>
+                    <span><a href="{spUrl c=admin a=modpro id=$v.id}">修改</a></span>
+                    <span><a href="{spUrl c=admin a=checkpro id=$v.id}">审核</a></span>
+                </td>
+              </tr>
+              {/foreach}
+            </tbody>
+        </table>
 	<div class="admin-pro-around">
 		<div class="admin-pro">
 			<div class="pro-info">
@@ -25,7 +44,7 @@
 				{foreach key=k item=v from=$items}
 					<li>
 						<span>{$v.rank}</span>
-						<span class="pic"><img src="{$v.pic}" /></span>
+						<span class="pic"><img style="width:80px;height:80px;" src="{$v.pic}" /></span>
 						<a target="_blank" href="http://item.taobao.com/item.htm?id={$v.iid}">
 							<span class="title">{$v.title}</span>
 						</a>
@@ -69,5 +88,6 @@
 		</div>
 		</div>
 	</div>
+    </div>
 </body>
 </html>

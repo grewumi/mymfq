@@ -1,7 +1,8 @@
 <div id="demo-page">
-    <div  data-role="header">
+    <div data-role="header">
         <h1>后台管理</h1>
         <a style="background-color:#A5A5A5;" role="button" data-role="button" href="#left-panel" data-icon="carat-r" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon ui-link ui-btn-left ui-btn ui-icon-carat-r ui-btn-icon-notext ui-corner-all">Open left panel</a>
+        <a style="background-color:#A5A5A5;" href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open right panel</a>
     </div>
      <div data-role="panel" id="left-panel" data-theme="b">
         <ul data-role="listview">
@@ -16,6 +17,17 @@
             <li><a href="/login.html?cmd=out">退出</a></li>
         </ul>
         <a href="#" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-mini ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-right">Close</a>
-
+        
     </div>
+    {if $proCur}
+    <div data-role="panel" id="right-panel" data-position="right" data-theme="b">
+        <ul data-role="listview">
+            <li><a href="{spUrl c=admin a=pro type=87}">明日预告</a></li>
+            <li><a href="{spUrl c=admin a=pro sh=no}">未审核</a></li>
+            <li><a href="{spUrl c=admin a=pro sh=ck2}">未通过</a></li>
+            <li><a href="{spUrl c=admin a=addpro}">添加商品</a></li>
+        </ul>
+        <a href="#" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-mini ui-btn-inline ui-icon-delete ui-btn-icon-right">Close</a>
+    </div><!-- /panel -->
+    {/if}
 </div>
