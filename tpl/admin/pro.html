@@ -20,18 +20,36 @@
             <tbody>
               {foreach key=k item=v from=$items}
               <tr>
-                <th>{$v.rank}</th>
                 <th><img style="width:80px;height:80px;" src="{$v.pic}" /></th>
                 <td>
+                    {$v.rank}
                     <a href="{$v.link}" data-rel="external" style="font-size:0.8em;">{$v.title|truncate:39:""}</a>
                     <span style="font-size:1.4em;color:red;">{$v.nprice}</span>
                     <span style="font-size:0.8em;color:gray;">{$v.oprice}</span>
                     {$v.commission_rate}%
                 </td>
                 <td>
-                    <span><a href="{spUrl c=admin a=delpro id=$v.id}">É¾³ý</a></span>
-                    <span><a href="{spUrl c=admin a=modpro id=$v.id}">ÐÞ¸Ä</a></span>
-                    <span><a href="{spUrl c=admin a=checkpro id=$v.id}">ÉóºË</a></span>
+                    <a href="#popupMenu" data-rel="popup" data-transition="slideup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a">²Ù×÷</a>
+                    <div data-role="popup" id="popupMenu" data-theme="b">
+                            <ul data-role="listview" data-inset="true" style="min-width:210px;">
+                                <li data-role="list-divider">²Ù×÷</li>
+                                <li><a href="{spUrl c=admin a=modpro id=$v.id}">ÐÞ¸Ä</a></li>
+                                <li><a href="{spUrl c=admin a=checkpro id=$v.id}">ÉóºË</a></li>
+                            </ul>
+                    </div>
+                </td>
+                <td>
+                    <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">É¾³ý</a>
+                    <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+                        <div data-role="header" data-theme="a">
+                         <h1>Delete Page?</h1>
+                        </div>
+                        <div role="main" class="ui-content">
+                            <h3 class="ui-title">È·¶¨É¾³ý?</h3>
+                            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a>
+                            <a href="{spUrl c=admin a=delpro id=$v.id}" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Delete</a>
+                        </div>
+                    </div>
                 </td>
               </tr>
               {/foreach}
