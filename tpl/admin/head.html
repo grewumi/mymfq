@@ -2,7 +2,9 @@
     <div data-role="header">
         <h1>后台管理</h1>
         <a style="background-color:#A5A5A5;" role="button" data-role="button" href="#left-panel" data-icon="carat-r" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon ui-link ui-btn-left ui-btn ui-icon-carat-r ui-btn-icon-notext ui-corner-all">Open left panel</a>
+        {if $proCur}
         <a style="background-color:#A5A5A5;" href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open right panel</a>
+        {/if}
     </div>
      <div data-role="panel" id="left-panel" data-theme="b">
         <ul data-role="listview">
