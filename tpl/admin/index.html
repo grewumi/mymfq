@@ -8,9 +8,9 @@
 <body>
     <div data-role="page">
 	{include file="admin/head.html"}
-        <h1><strong>商品总数:<b style="color:red;">{$allPros}</b>(未过期)</strong></h1>
-        <h1><strong>今日上新:<b style="blue;">{$todayPros}</b></strong></h1>
-        <h1><strong>过期商品:{if $guoqis}<b style="margin-right:18px;color:red;">{$guoqis}</b><a href="{spUrl c=admin a=delgq}">删除</a>{/if}</strong></h1>
+        <h2><strong>商品总数:<b style="color:red;">{$allPros}</b>(未过期)</strong></h2>
+        <h2><strong>今日上新:<b style="blue;">{$todayPros}</b></strong></h2>
+        <h2><strong>过期商品:{if $guoqis}<b style="margin-right:18px;color:red;">{$guoqis}</b><a href="{spUrl c=admin a=delgq}">删除</a>{/if}</strong></h2>
     </div>
 </body>
 </html>

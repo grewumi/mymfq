@@ -41,18 +41,21 @@ $(document).ready(function(){
 							<option value="88">每日爆款</option>
 							<option value="89">每日精选</option>
 							<option value="85">广告位</option>
-							<option value="86">一秒疯抢招商</option>
 							<option value="87">明日预告</option>
 						</select>
-						<select name="act_from">
-						{foreach key=k item=v from=$actfroms}						
-							<option value="{$v.id}" {if $pro.act_from==$v.id}selected="true"{/if}>{$v.name}</option>
+                                                <select name="classification">
+						{foreach key=k item=v from=$classifications}						
+							<option value="{$v.type}" {if $pro.classification==$v.type}selected="true"{/if}>{$v.name}</option>
 						{/foreach}
 						</select>
 						<select name="cat">
 						{foreach key=k item=v from=$proCats}
 							<option value="{$v.type}"  {if $pro.cat==$v.type}selected="true"{/if}>{$v.name}</option>
 						{/foreach}	
+						</select>
+                                                 <select name="act_from">					
+							<option value="1" {if $pro.act_from==1}selected="true"{/if}>添加产品</option>
+                                                        <option value="20" {if $pro.act_from==20}selected="true"{/if}>招商产品</option>
 						</select>
 						<div class="clearfix"></div>
 					</div>
