@@ -5,6 +5,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gbk"> 
 <title>后台  - 商品管理</title>
 {include file="common/jsandcsslink.html"}
+<style type="text/css">
+      /* 内部样式 */
+      .ui-table th, .ui-table td{
+          padding: 0.2em;
+          vertical-align:middle;
+      }
+      .ui-btn-icon-left{
+          padding-left:1em;
+      }
+</style>
 </head>
 <body>
     <div data-role="page">   
@@ -29,7 +39,7 @@
                     {$v.commission_rate}%
                 </td>
                 <td>
-                    <a href="#popupMenu" data-rel="popup" data-transition="slideup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a">操作</a>
+                    <a href="#popupMenu" data-rel="popup" data-transition="slideup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a"></a>
                     <div data-role="popup" id="popupMenu" data-theme="b">
                             <ul data-role="listview" data-inset="true" style="min-width:210px;">
                                 <li data-role="list-divider">操作</li>
@@ -39,7 +49,7 @@
                     </div>
                 </td>
                 <td>
-                    <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">删除</a>
+                    <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b"></a>
                     <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
                         <div role="main" class="ui-content">
                             <h3 class="ui-title">确定删除?</h3>
