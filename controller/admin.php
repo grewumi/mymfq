@@ -365,8 +365,15 @@ class admin extends spController{
 					$art = $pros->create($item);
 					if($art){	//修改成功后跳转
 						$submitTips = '添加成功';
-                                                if($GLOBALS['G_SP']['ajaxToUz']['addpro'])
+                                                if($GLOBALS['G_SP']['ajaxToUz']['addpro']){
                                                     $this->postDataToUzPhp($item,'admin');
+                                                    if($GLOBALS['G_SP']['ajaxToWhich']['youpinba'])
+                                                         $this->postDataToUzPhp($item,'youpinba');
+                                                    if($GLOBALS['G_SP']['ajaxToWhich']['okbuy'])
+                                                         $this->postDataToUzPhp($item,'okbuy');
+                                                    if($GLOBALS['G_SP']['ajaxToWhich']['mplife'])
+                                                         $this->postDataToUzPhp($item,'mplife');
+                                                }
 //						header("Location:".$referUrl);
 					}else
 						$submitTips = '添加失败';
@@ -431,8 +438,15 @@ class admin extends spController{
                 $iteminfo = $pros->find(array('id'=>$id));
                 if($pros->delete(array('id'=>$id))){
                     $item = array('iid'=>$iteminfo['iid'],'del'=>1);
-                    if($GLOBALS['G_SP']['ajaxToUz']['delpro'])
+                    if($GLOBALS['G_SP']['ajaxToUz']['delpro']){
                         $this->postDataToUzPhp($item,'admin');
+                        if($GLOBALS['G_SP']['ajaxToWhich']['youpinba'])
+                             $this->postDataToUzPhp($item,'youpinba');
+                        if($GLOBALS['G_SP']['ajaxToWhich']['okbuy'])
+                             $this->postDataToUzPhp($item,'okbuy');
+                        if($GLOBALS['G_SP']['ajaxToWhich']['mplife'])
+                             $this->postDataToUzPhp($item,'mplife');                       
+                    }
 //                    header("Location:".$referUrl);
                 }
 		
@@ -507,8 +521,15 @@ class admin extends spController{
 			if($art){ // 修改成功后跳转
 				$submitTips = '修改成功';
 //                                var_dump($item);
-                                if($GLOBALS['G_SP']['ajaxToUz']['modpro'])
+                                if($GLOBALS['G_SP']['ajaxToUz']['modpro']){
                                     $this->postDataToUzPhp($item,'admin');
+                                    if($GLOBALS['G_SP']['ajaxToWhich']['youpinba'])
+                                         $this->postDataToUzPhp($item,'youpinba');
+                                    if($GLOBALS['G_SP']['ajaxToWhich']['okbuy'])
+                                         $this->postDataToUzPhp($item,'okbuy');
+                                    if($GLOBALS['G_SP']['ajaxToWhich']['mplife'])
+                                         $this->postDataToUzPhp($item,'mplife');                                    
+                                }
 //				if($this->mode!='try')
 //					header("Location:".$referUrl);
 //				else

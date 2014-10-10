@@ -9,7 +9,8 @@
      <div data-role="panel" id="left-panel" data-theme="b">
         <ul data-role="listview">
             <li><a href="/admin.html" {if $indexCur}class="cur"{/if}>管理首页</a></li>
-            <li><a href="/pro.html" {if $proCur}class="cur"{/if}>商品管理</a></li>
+            <li><a href="{spUrl c=admin a=pro mode=pro}" {if $proCur}class="cur"{/if}>促销商品管理</a></li>
+            <li><a href="{spUrl c=admin a=pro mode=try}" {if $tryItemCur}class="cur"{/if}>试用商品管理</a></li>
             <li><a href="/proget.html" {if $progetCur}class="cur"{/if}>商品采集</a></li>
             <li><a href="/dbselect.html" {if $dbselectCur}class="cur"{/if}>数据导出</a></li>
             <li><a href="/tkreport.html" {if $tkreportCur}class="cur"{/if}>淘客报表</a></li>
@@ -24,10 +25,14 @@
     {if $proCur}
     <div data-role="panel" id="right-panel" data-position="right" data-theme="b">
         <ul data-role="listview">
-            <li><a href="{spUrl c=admin a=pro type=87}">明日预告</a></li>
-            <li><a href="{spUrl c=admin a=pro sh=no}">未审核</a></li>
-            <li><a href="{spUrl c=admin a=pro sh=ck2}">未通过</a></li>
-            <li><a href="{spUrl c=admin a=addpro}">添加商品</a></li>
+                <li><a href="{spUrl c=admin a=pro mode=$mode classification=1}">一秒疯抢</a></li>
+                <li><a href="{spUrl c=admin a=pro mode=$mode classification=2}">一秒疯抢独家</a></li>
+		<li><a href="{spUrl c=admin a=pro mode=$mode type=87}">明日预告</a></li>
+		<li><a href="{spUrl c=admin a=pro mode=$mode status=ygq}">过期数据</a></li>
+		<li><a href="{spUrl c=admin a=pro mode=$mode type=85}">广告位</a></li>
+		<li><a href="{spUrl c=admin a=pro mode=$mode sh=no}">未审核</a></li>
+		<li><a href="{spUrl c=admin a=pro mode=$mode sh=ck2}">未通过</a></li>
+		<li><a href="{spUrl c=admin a=addpro mode=$mode}">添加商品</a></li>
         </ul>
         <a href="#" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-mini ui-btn-inline ui-icon-delete ui-btn-icon-right">Close</a>
     </div><!-- /panel -->

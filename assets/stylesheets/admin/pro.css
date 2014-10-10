@@ -57,3 +57,6 @@
 .pro-ctrl form{
     margin: 3%;
 }
+.ui-table th, .ui-table td{
+    vertical-align: none;
+}

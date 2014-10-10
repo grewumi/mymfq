@@ -22,6 +22,7 @@ $website = array(
 	'aitaoba'=>array('actType'=>29,'name'=>'∞ÆÃ‘∞…','rank'=>6), //∞ÆÃ‘∞…
 //	'bujie'=>array('actType'=>30,'name'=>'≤ΩΩ÷Õ¯','rank'=>6), // ≤ΩΩ÷Õ¯
 	'yimiaofengqiang'=>array('actType'=>20,'name'=>'“ª√Î∑Ë«¿','rank'=>5), // “ª√Î∑Ë«¿
+        'yimiaofengqiangdujia'=>array('actType'=>1,'name'=>'“ª√Î∑Ë«¿∂¿º“','rank'=>5), // “ª√Î∑Ë«¿∂¿º“
 	'mytehui'=>array('actType'=>6,'name'=>'VIPÃÿª›','rank'=>5), // VIPÃÿª›
 	'jiejie'=>array('actType'=>25,'name'=>'Ω„π‰Ω÷','rank'=>4), // Ω„π‰Ω÷
 	'tealife'=>array('actType'=>7,'name'=>'Ã‘≈£∆∑','rank'=>3), // Ã‘≈£∆∑
