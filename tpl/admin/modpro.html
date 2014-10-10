@@ -8,6 +8,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	huoqu();
+        setrank();
 });
 </script>
 </head>
@@ -25,12 +26,12 @@ $(document).ready(function(){
 					</div>
 					
 					<div class="row">
-						<label>商品ID:</label><input name="iid" id="iid" type="text" value="{$pro.iid}" onKeyUp="value=value.replace(/[^\d]/gi,'');" onpaste="value=value.replace(/[^\d]/gi,'');" />
+						<input placeholder="商品IID：" name="iid" id="iid" type="text" value="{$pro.iid}" onKeyUp="value=value.replace(/[^\d]/gi,'');" onpaste="value=value.replace(/[^\d]/gi,'');" />
 						<input class="btn" type="button" id="huoqu" value="一键获取"/>
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>标题:</label><input class="long" id="title" name="title" type="text" value="{$pro.title}" />
+						<input placeholder="标题:" class="long" id="title" name="title" type="text" value="{$pro.title}" />
 						<a class="jiabt">加标头</a>
 						<div class="clearfix"></div>
 					</div>
@@ -60,33 +61,32 @@ $(document).ready(function(){
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>原价:</label><input class="short" id="oprice" name="oprice" type="text" value="{$pro.oprice}" />
+						<input placeholder="原价:" class="short" id="oprice" name="oprice" type="text" value="{$pro.oprice}" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>现价:</label><input class="short" name="nprice" type="text" value="{$pro.nprice}" />
+						<input placeholder="现价:" class="short" name="nprice" type="text" value="{$pro.nprice}" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>销量:</label><input class="short" name="volume" type="text" value="{$pro.volume}" />
-						<span><a class="getVolume">获取销量</a></span>
+						<input placeholder="销量:" class="short" name="volume" type="text" value="{$pro.volume}" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>商品链接:</label><input class="long" id="link" name="link" type="text" value="{$pro.link}" />
+						<input placeholder="商品链接:" class="long" id="link" name="link" type="text" value="{$pro.link}" />
 						<span>{if $pro.iid}<a target="_blank" href="http://item.taobao.com/item.htm?id={$pro.iid}">看一下</a>{/if}</span>
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>开始日期:</label><input class="short" name="st" type="text" value="{$pro.st}" />
+						<input placeholder="开始日期:" class="short" name="st" type="text" value="{$pro.st}" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>结束日期:</label><input class="short" name="et" type="text" value="{$pro.et}" />
+						<input placeholder="结束日期:" class="short" name="et" type="text" value="{$pro.et}" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>商品图片:</label><input class="long" name="pic" type="text" value="{$pro.pic}" />
+						<input placeholder="商品图片:" class="long" name="pic" type="text" value="{$pro.pic}" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
@@ -98,39 +98,39 @@ $(document).ready(function(){
 					</div>
 					<div class="row shopshow">
 						<label>淘宝/天猫:</label>
-						<input type="radio" name="shopshow" class="shopshow-c" value="1" {if $pro.shopshow==1}checked="true"{/if} /><label>淘宝:</label>
-						<input type="radio" name="shopshow" class="shopshow-t" value="0" {if $pro.shopshow!=1}checked="true"{/if}/><label>天猫:</label>
+						<input type="radio" name="shopshow" class="shopshow-c" id="shopshow-c" value="1" {if $pro.shopshow==1}checked="true"{/if} /><label for="shopshow-c">淘宝:</label>
+						<input type="radio" name="shopshow" class="shopshow-t" id="shopshow-t" value="0" {if $pro.shopshow!=1}checked="true"{/if}/><label for="shopshow-t">天猫:</label>
 						<div class="clearfix"></div>
 					</div>
 					<div class="row shopv">
 						<label>是否VIP价格:</label>
-						<input type="radio" name="shopv" class="shopv" value="1"  {if $pro.shopv==1}checked="true"{/if} /><label>VIP:</label>
-						<input type="radio" name="shopv" class="noshopv" value="0" {if $pro.shopv!=1}checked="true"{/if} /><label>非VIP:</label>
+						<input type="radio" name="shopv" class="shopv" id="shopv" value="1"  {if $pro.shopv==1}checked="true"{/if} /><label for="shopv">VIP:</label>
+						<input type="radio" name="shopv" class="noshopv" id="noshopv" value="0" {if $pro.shopv!=1}checked="true"{/if} /><label for="noshopv">非VIP:</label>
 						<div class="clearfix"></div>
 					</div>	
 					<div class="row">
 						<label>是否包邮:</label>
-						<input type="radio" name="carriage" value="1" class="postage" {if $pro.carriage==1}checked="true"{/if} /><label>包邮:</label>
-						<input type="radio" name="carriage" value="0" class="nopostage" {if $pro.carriage==0}checked="true"{/if} /><label>不包邮:</label>
+						<input type="radio" name="carriage" value="1" class="postage" id="postage" {if $pro.carriage==1}checked="true"{/if} /><label for="postage">包邮:</label>
+						<input type="radio" name="carriage" value="0" class="nopostage" id="nopostage" {if $pro.carriage==0}checked="true"{/if} /><label for="nopostage">不包邮:</label>
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
 						<label>更新排前:</label>
-						<input type="radio" name="forward" value="1" /><label>排前:</label>
-						<input type="radio" name="forward" value="0" checked="true" /><label>不排前:</label>
+						<input type="radio" name="forward" value="1" id="isforward" /><label for="isforward">排前:</label>
+						<input type="radio" name="forward" value="0" id="noforward" checked="true" /><label for="noforward">不排前:</label>
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>排序:</label><input class="short" id="rank" name="rank" type="text" value="{$pro.rank}" />
+						<input placeholder="排序:" class="short" id="rank" name="rank" type="text" value="{$pro.rank}" />
 						<em class="rank"><a class="set499">499</a><a class="set500">500</a></em>
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>旺旺:</label><input class="short" id="ww" name="ww" type="text" value="{$pro.nick}" />
+						<input placeholder="旺旺:" class="short" id="ww" name="ww" type="text" value="{$pro.nick}" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>备注:</label><textarea class="long" name="remark" type="text">{if $pro.remark}{$pro.remark}{/if}</textarea>
+						<textarea placeholder="备注:" class="long" name="remark" type="text">{if $pro.remark}{$pro.remark}{/if}</textarea>
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
