@@ -1,8 +1,10 @@
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 {if $proCur}
+<!-- 左侧菜单功能 -->
 <script>
 $( document ).on( "swipeleft swiperight", "#demo-page", function( e ) {
     if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) {
@@ -15,6 +17,7 @@ $( document ).on( "swipeleft swiperight", "#demo-page", function( e ) {
 });
 </script>
 {else}
+<!-- 商品管理右侧菜单功能 -->
 <script>
 $( document ).on( "swipeleft", "#demo-page", function( e ) {
     if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) {

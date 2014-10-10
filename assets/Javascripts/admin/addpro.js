@@ -52,3 +52,12 @@ function userhuoqu(){
 		});
 	});
 }
+
+function setrank(){
+	 $(".set500").click(function(){
+		 $("#rank").val(500);
+	 });
+	  $(".set499").click(function(){
+		 $("#rank").val(499);
+	 });
+}

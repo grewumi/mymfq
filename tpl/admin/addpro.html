@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="gbk"?> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gbk">
 <title>后台  - 商品添加</title>
-<link rel="stylesheet" href="/assets/stylesheets/admin/head.css" />
-<link rel="stylesheet" href="/assets/stylesheets/admin/modpro.css" />
 {include file="common/jsandcsslink.html"}
 <script type="text/javascript"  src="/assets/Javascripts/admin/addpro.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	huoqu();
+        setrank();
 });
 </script>
 </head>
@@ -28,13 +26,12 @@ $(document).ready(function(){
 					</div>
 					
 					<div class="row">
-						<label>商品ID:</label><input id="iid" name="iid" type="text" onKeyUp="value=value.replace(/[^\d]/gi,'');" onpaste="value=value.replace(/[^\d]/gi,'');" />
+						<input placeholder="商品IID：" id="iid" name="iid" type="text" onKeyUp="value=value.replace(/[^\d]/gi,'');" onpaste="value=value.replace(/[^\d]/gi,'');" />
 						<input class="btn" id="huoqu" type="button" value="一键获取" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>标题:</label><input class="long" name="title" id="title" type="text" />
-						<a class="jiabt">加标头</a>
+						<input placeholder="标题:" class="long" name="title" id="title" type="text" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
@@ -60,33 +57,32 @@ $(document).ready(function(){
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>原价:</label><input class="short" id="oprice" name="oprice" type="text" />
+						<input placeholder="原价:"  class="short" id="oprice" name="oprice" type="text" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>现价:</label><input class="short" name="nprice" type="text" />
+						<input placeholder="现价:" class="short" name="nprice" type="text" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>销量:</label><input class="short" name="volume" type="text" value="200" />
-						<span><a class="getVolume">获取销量</a></span>
+						<input placeholder="销量:" class="short" name="volume" type="text" value="200" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>商品链接:</label><input class="long" id="link" type="text" />
+						<input placeholder="商品链接:" class="long" id="link" type="text" />
 						<span></span>
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>开始日期:</label><input class="short" name="st" type="text" value="{$st}" />
+						<input placeholder="开始日期:" class="short" name="st" type="text" value="{$st}" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>结束日期:</label><input class="short" name="et" type="text" value="{$et}" />
+						<input placeholder="结束日期:" class="short" name="et" type="text" value="{$et}" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
-						<label>商品图片:</label><input class="long" id="pic" name="pic" type="text" />
+						<input placeholder="商品图片:" class="long" id="pic" name="pic" type="text" />
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
@@ -98,26 +94,30 @@ $(document).ready(function(){
 					</div>
 					<div class="row shopshow">
 						<label>淘宝/天猫:</label>
-						<input type="radio" name="shopshow" value="1" checked /><label>淘宝:</label>
-						<input type="radio" name="shopshow" value="0" /><label>天猫:</label>
+						<input type="radio" name="shopshow" id="shopshow_c" value="1" checked />
+                                                <label for="shopshow_c">淘宝:</label>
+						<input type="radio" name="shopshow" id="shopshow_t" value="0" />
+                                                <label for="shopshow_t">天猫:</label>
 						<div class="clearfix"></div>
 					</div>
 					<div class="row shopv">
 						<label>是否VIP价格:</label>
-						<input type="radio" name="shopv" value="1" /><label>VIP:</label>
-						<input type="radio" name="shopv" value="0" checked /><label>非VIP:</label>
+						<input type="radio" name="shopv" id="isvip" value="1" />
+                                                <label for="isvip">VIP:</label>
+						<input type="radio" name="shopv" id="novip" value="0" checked />
+                                                <label for="novip">非VIP:</label>
 						<div class="clearfix"></div>
 					</div>	
 					<div class="row">
 						<label>是否包邮:</label>
-						<input type="radio" name="carriage" value="1" checked /><label>包邮:</label>
-						<input type="radio" name="carriage" value="0" /><label>不包邮:</label>
+						<input type="radio" name="carriage" id="iscarriage" value="1" checked /><label for="iscarriage">包邮:</label>
+						<input type="radio" name="carriage" id="nocarriage" value="0" /><label for="nocarriage">不包邮:</label>
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
 						<label>更新排前:</label>
-						<input type="radio" name="forward" value="1" /><label>排前:</label>
-						<input type="radio" name="forward" value="0" checked /><label>不排前:</label>
+						<input type="radio" name="forward" id="isforward" value="1" /><label for="isforward">排前:</label>
+						<input type="radio" name="forward" id="noforward" value="0" checked /><label for="noforward">不排前:</label>
 						<div class="clearfix"></div>
 					</div>
 					<div class="row">
