@@ -7,7 +7,7 @@
 	clear:both;
 }
 .head-around{
-	background:#BF0000;padding:5px 0px;
+	background:#BF0000;padding:5px 0px;width:100%;z-index:99;
 }
 .head-index{
 	width:100%;margin:0 auto 0 auto;height:30px;position:relative;
@@ -50,3 +50,7 @@
 	text-align:center;
 }
 /* END - 手机导航 */
+
+.scoll_nav{
+    position:fixed;
+}

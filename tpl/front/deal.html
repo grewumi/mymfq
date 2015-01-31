@@ -40,6 +40,13 @@ $(document).ready(function(){
             effect: "fadeIn", 
             failurelimit: 10
         });
+        $(window).scroll(function() {
+		if($(window).scrollTop() >  $(".head-around").height()){
+			$(".head-around").addClass("scoll_nav")
+		}else{
+			$(".head-around").removeClass( "scoll_nav")
+		}
+	});
 });
 </script>
 </head>

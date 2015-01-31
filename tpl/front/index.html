@@ -30,6 +30,14 @@ $(document).ready(function(){
 	$(".item-price").height(pricehtight);
 	$("img#buy").height(pricehtight);
 	var threeone = $(".sub-index").width();
+        
+        $(window).scroll(function() {
+		if($(window).scrollTop() >  $(".head-around").height()){
+			$(".head-around").addClass("scoll_nav")
+		}else{
+			$(".head-around").removeClass( "scoll_nav")
+		}
+	});
 	//var threetoone = threeone/3;
 	//$("#threetoone").width(threetoone);
 });
