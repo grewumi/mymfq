@@ -86,7 +86,7 @@ body{
     list-style-type: none;
 }
 .items-like li{
-	float:left;width:45%;margin:0.8em;
+	float:left;width:45%;margin:0.8em auto 0.8em 0em;
 }
 .items-like li{
 	position:relative;
