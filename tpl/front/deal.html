@@ -20,6 +20,16 @@ $(document).ready(function(){
 	$("img#item-pic").width(imgheight);
 	var titleheight = 0.10*imgheight;
 	$(".item-tit").height(titleheight);
+        
+        var buyW = $(".buy").width();
+        var buyH = $(".buy").height();
+        var idInt = setInterval(function(){
+            if($("iframe")){
+                $("iframe").width(buyW);
+                $("iframe").height(buyH);
+                clearInterval(idInt);
+            }
+        },1000);
 });
 </script>
 </head>

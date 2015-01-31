@@ -12,18 +12,18 @@ class main extends spController{
 		$is_iphone = strpos($agent,'iphone') ? true : false;
 		$is_ipad = strpos($agent,'ipad') ? true : false;
 		$is_android = strpos($agent,'android') ? true : false;
-		if($is_pc){
-			;
-		}
-		if($is_iphone){
-			header("Location:http://m.yimiaofengqiang.com".$_SERVER[REQUEST_URI]);
-		}
-		if($is_ipad){
-			header("Location:http://m.yimiaofengqiang.com".$_SERVER[REQUEST_URI]);
-		}
-		if($is_android){
-			 header("Location:http://m.yimiaofengqiang.com".$_SERVER[REQUEST_URI]);
-		}
+//		if($is_pc){
+//			;
+//		}
+//		if($is_iphone){
+//			header("Location:http://m.yimiaofengqiang.com".$_SERVER[REQUEST_URI]);
+//		}
+//		if($is_ipad){
+//			header("Location:http://m.yimiaofengqiang.com".$_SERVER[REQUEST_URI]);
+//		}
+//		if($is_android){
+//			 header("Location:http://m.yimiaofengqiang.com".$_SERVER[REQUEST_URI]);
+//		}
 		
 	}
 	public function view(){
