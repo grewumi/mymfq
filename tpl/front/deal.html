@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="/assets/stylesheets/front/foot.css" />
 <link rel="stylesheet" href="/assets/stylesheets/front/deal.css" />
 <script type="text/javascript"  src="/assets/Javascripts/jquery-2.0.3.min.js"></script>
+<script type="text/javascript"  src="/assets/Javascripts/jquery.lazyload.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	var imgheight = $(".item-img").width();
@@ -20,6 +21,9 @@ $(document).ready(function(){
 	$("img#item-pic").width(imgheight);
 	var titleheight = 0.10*imgheight;
 	$(".item-tit").height(titleheight);
+        // 两列图片大小
+        $(".2l").width($("li").width());
+        $(".2l").height($("li").width());
         
         var buyW = $(".buy").width();
         var buyH = $(".buy").height();
@@ -30,6 +34,12 @@ $(document).ready(function(){
                 clearInterval(idInt);
             }
         },1000);
+        
+        $("img.lazy").lazyload({
+            placeholder: "http://img03.taobaocdn.com/imgextra/i3/1602138689/T2__REXchOXXXXXXXX-1602138689.gif", 
+            effect: "fadeIn", 
+            failurelimit: 10
+        });
 });
 </script>
 </head>
@@ -38,7 +48,7 @@ $(document).ready(function(){
 <div class="deal-main">
 	<div class="item-deal">
 		<div class="item-img">
-			<img id="item-pic" src="{$pro.pic}" /> 
+			<img id="item-pic" class="lazy" data-original="{$pro.pic}" /> 
 		</div>
 		<div class="item-tit">
 			{$pro.title}
@@ -49,6 +59,28 @@ $(document).ready(function(){
 			<a class="normal" href="http://item.taobao.com/item.htm?id={$pro.iid}"></a>
 			<a data-type="0" biz-itemid="{$pro.iid}" data-tmpl="145x145" data-tmplid="1893" data-rd="2" data-style="2" data-border="0" href="http://item.taobao.com/item.htm?id={$pro.iid}"></a>
 		</span>
+                <div class="hr"></div>
+		<div class="items-like">
+			<p>一秒疯抢相关推荐....</p>
+			<div class="items">
+				<ul>
+					{foreach key=k item=v from=$dujia}
+						<li>
+							<a target="_blank" href="http://www.yimiaofengqiang.com/main/deal/id/{$v.id}.html">
+								<img class="lazy 2l" data-original="{$v.pic}"/>
+							</a>
+							<div class="price">
+								<del>￥{$v.oprice}</del>
+								<span>￥{$v.nprice}</span>
+								<a target="_blank" href="http://www.yimiaofengqiang.com/main/deal/id/{$v.id}.html">立即购买</a>
+							</div>
+							
+						</li>
+					{/foreach}
+					<div class="clearfix"></div>
+				</ul>
+			</div>
+		</div>
 	</div>
 	<div class="clearfix"></div>
 </div>

@@ -66,3 +66,53 @@ body{
 .clearfix{
 	clear:both;
 }
+/* yx-item-hr */
+.hr{
+	width:95%;
+	height:1px;
+	background:rgb(211, 214, 209);
+        margin: 2em auto;
+}
+/* end - yx-item-hr */
+
+/* yx-item-like */
+.items-like{
+	width:95%;margin:0 auto;
+}
+.items-like p{
+	margin-bottom:1em;
+}
+.items-like ul{
+    list-style-type: none;
+}
+.items-like li{
+	float:left;width:45%;margin:1em;
+}
+.items-like li{
+	position:relative;
+}
+.items-like li .price del{
+	font-family: "Î¢ÈíÑÅºÚ";
+	color: gray;
+	font-size: 12px;
+	font-weight: normal;
+        width:45px;overflow: hidden;display: inline-block;
+}
+.items-like li .price span{
+	color: #D10303;
+	font-family: "Î¢ÈíÑÅºÚ";
+	font-size: 18px;
+	font-weight: 600;
+}
+.items-like li .price a{
+	display:block;
+	float:right;
+	width:70px;
+	height:20px;
+	background: #EA2F5C;
+	color: #FFF;
+	margin-top: 5px;
+	text-align: center;
+	border-radius:5px;
+}
+/* end - yx-item-like */

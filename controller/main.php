@@ -41,6 +41,7 @@ class main extends spController{
                 if(strpos($pro['link'],'item.taobao'))
                     $this->single = 1;
                 $this->pro = $pro;
+                $this->dujia = json_decode(file_get_contents("http://www.yimiaofengqiang.com/?jsonp=1&othersync=1"),1);
 		$this->display("front/deal.html");
 	}
 	
