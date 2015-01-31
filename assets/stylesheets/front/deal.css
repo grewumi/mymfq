@@ -68,7 +68,7 @@ body{
 }
 /* yx-item-hr */
 .hr{
-	width:95%;
+	width:98%;
 	height:1px;
 	background:rgb(211, 214, 209);
         margin: 2em auto;
@@ -77,7 +77,7 @@ body{
 
 /* yx-item-like */
 .items-like{
-	width:95%;margin:0 auto;
+	width:98%;margin:0 auto;
 }
 .items-like p{
 	margin-bottom:1em;
@@ -86,7 +86,7 @@ body{
     list-style-type: none;
 }
 .items-like li{
-	float:left;width:45%;margin:1em;
+	float:left;width:45%;margin:0.8em;
 }
 .items-like li{
 	position:relative;
