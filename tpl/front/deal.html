@@ -25,16 +25,6 @@ $(document).ready(function(){
         $(".2l").width($("li").width());
         $(".2l").height($("li").width());
         
-        var buyW = $(".buy").width();
-        var buyH = $(".buy").height();
-        var idInt = setInterval(function(){
-            if($("iframe")){
-                $("iframe").width(buyW);
-                $("iframe").height(buyH);
-                clearInterval(idInt);
-            }
-        },1000);
-        
         $("img.lazy").lazyload({
             placeholder: "http://img03.taobaocdn.com/imgextra/i3/1602138689/T2__REXchOXXXXXXXX-1602138689.gif", 
             effect: "fadeIn", 
@@ -62,10 +52,9 @@ $(document).ready(function(){
 		</div>
 		<span class="nprice">￥{$pro.nprice}</span>
 		<del class="oprice">市场价:￥{$pro.oprice}元</del>
-		<span class="buy" style="position:relative;">立即购买
-			<a class="normal" href="http://item.taobao.com/item.htm?id={$pro.iid}"></a>
-			<a data-type="0" biz-itemid="{$pro.iid}" data-tmpl="145x145" data-tmplid="1893" data-rd="2" data-style="2" data-border="0" href="http://item.taobao.com/item.htm?id={$pro.iid}"></a>
-		</span>
+		<a isconvert=1 data-itemid="{$pro.iid}" target="_blank">
+                    <span class="buy" style="position:relative;">立即购买</span>
+                </a>
                 <div class="hr"></div>
 		<div class="items-like">
 			<p>一秒疯抢相关推荐....</p>
