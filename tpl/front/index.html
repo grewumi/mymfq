@@ -40,12 +40,20 @@ $(document).ready(function(){
 	});
 	//var threetoone = threeone/3;
 	//$("#threetoone").width(threetoone);
+        {if $searchnull}
+        $(".search-box").append("<a style='cursor:pointer;' target='_blank' isconvert=1 data-keyword='{if $q_unencode}{$q_unencode}{/if}'>{if $q_unencode}{$q_unencode}{/if}</a>");
+        {/if}
 });
 </script>
 </head>
 <body>
 {include file="front/head.html"}
 {include file="front/index_content.html"}
+{if $searchnull}
+<div class="search-box" style="margin-top:5px;color:red;">
+    <p style="margin:5px auto;color:gray;">搜索君未能着找到您需要的商品，您可以点击下边关键词继续搜索</p>
+</div>
+{/if}
 {include file="front/foot.html"}
 </body>
 </html>

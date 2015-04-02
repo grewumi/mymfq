@@ -65,7 +65,7 @@ class main extends spController{
 		// 搜索
 		$searchKey = $this->spArgs('searchKey');
 		$q = urldecode($this->spArgs('q'));
-		
+		$this->q_unencode = $q;
 		// 转成url参数
 		if($searchKey)
 			header("Location:?q=".$searchKey);
@@ -153,6 +153,8 @@ class main extends spController{
 		$smarty->assign("pager",$pros->spPager()->getPager());//$this->pager = $pros->spPager()->getPager();
 		$smarty->assign("items",$itemList);//$this->items = $itemList;
                 $smarty->assign("itemsC1",$itemsC1);//$this->items = $itemList;
+                if(!$itemList && !$itemsC1 && $q )
+                    $this->searchnull = 1;
 		$smarty->assign("admin",$_SESSION['admin'],true);//$this->admin = $_SESSION['admin'];
 		
 		// 输出静态页面
