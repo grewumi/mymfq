@@ -52,9 +52,15 @@ $(document).ready(function(){
 		</div>
 		<span class="nprice">￥{$pro.nprice}</span>
 		<del class="oprice">市场价:￥{$pro.oprice}元</del>
+                {if $single}
                 <a isconvert=1 data-itemid="{$pro.iid}" target="_blank">
                     <span class="buy" style="position:relative;">立即购买</span>
                 </a>
+                {else}
+                <a href="{$pro.link}" target="_blank">
+                    <span class="buy" style="position:relative;">立即购买</span>
+                </a>
+                {/if}
                 <div class="hr"></div>
                 <!--以下是QQ邮件列表订阅嵌入代码-->
                 <script >var nId = "432bdfd6cefd20505eaf927de888f810d19c01201d2293dd",nWidth="auto",sColor="light",sText="填写您的邮件地址，天天都有零元购：" ;</script>
