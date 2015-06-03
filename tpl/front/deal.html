@@ -53,7 +53,7 @@ $(document).ready(function(){
 		<span class="nprice">￥{$pro.nprice}</span>
 		<del class="oprice">市场价:￥{$pro.oprice}元</del>
                 {if $single}
-                <a isconvert=1 biz-itemid="{$pro.iid}" target="_blank">
+                <a isconvert=1 biz-itemid="{$pro.iid}" target="_blank" href="http://item.taobao.com/item.htm?id={$pro.iid}">
                     <span class="buy" style="position:relative;">立即购买</span>
                 </a>
                 {else}
