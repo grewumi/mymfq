@@ -43,7 +43,6 @@ $spConfig = array(
 			'suffix' => '.html', // 生成地址的结尾符，网址后缀，可自由设置，如果“.do”或“.myphp”，该参数可为空，默认是.html。
 			'sep' => '/', // 网址参数分隔符，建议是“-_/”之一
 			'map' => array(	// 网址映射
-                                'desktop'=>'main@todesktop',
 				'view'=>'main@view',
 //				'user'=>'main@user',
 				'outitems'=>'main@outitems',
