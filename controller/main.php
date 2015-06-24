@@ -41,6 +41,7 @@ class main extends spController{
                 $id = $this->spArgs('id');
 		$pro = json_decode(file_get_contents("http://www-1.yimiaofengqiang.com/main/deal/id/".$id.".html?dealsync=1"),1);
                 $pro['title'] = iconv('utf-8','gbk',urldecode($pro['title']));
+                $pro['ptname'] = iconv('utf-8','gbk',urldecode($pro['ptname']));
                 // END »ñÈ¡seller_id
                 if($pro){
                     $this->pro = $pro;
