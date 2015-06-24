@@ -38,14 +38,32 @@ class main extends spController{
         }
 
         public function deal(){
-		$id = $this->spArgs('id');
+$id = $this->spArgs('id');
 		$pros = spClass("m_pro");
 		$pro = $pros->find(array('id'=>$id));
-                if(strpos($pro['link'],'item.taobao'))
-                    $this->single = 1;
-                $this->pro = $pro;
+                $dealsync = $this->spArgs('dealsync');
+                // 获取seller_id
+                import("tbapi.php");
+                $seller_id = getItemDetail($pro['iid']);
+                $pro['sid'] = $seller_id['slink'];
+                // END 获取seller_id
+                if($pro){
+                    $frompt = spClass("m_actfrom")->find(array('id'=>$pro['act_from']));
+                    $ptname = $frompt['name'];
+                    if(strpos($pro['link'],'item.taobao'))
+                        $this->single = 1;
+                    $pro['ptname'] = $ptname;
+                    $this->pro = $pro;
+                }else{
+                    header("Location:/");
+                }
                 $this->dujia = json_decode(file_get_contents("http://www.yimiaofengqiang.com/?jsonp=1&othersync=1"),1);
-		$this->display("front/deal.html");
+                if($dealsync){
+                    $pro['title'] = urlencode(iconv('gbk','utf-8',$pro['title']));
+                    echo json_encode($pro);
+                }else{
+                    $this->display("front/deal.html");
+                }
 	}
 	
 	public function outitems(){
