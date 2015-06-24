@@ -38,32 +38,18 @@ class main extends spController{
         }
 
         public function deal(){
-$id = $this->spArgs('id');
-		$pros = spClass("m_pro");
-		$pro = $pros->find(array('id'=>$id));
-                $dealsync = $this->spArgs('dealsync');
-                // 获取seller_id
-                import("tbapi.php");
-                $seller_id = getItemDetail($pro['iid']);
-                $pro['sid'] = $seller_id['slink'];
+                $id = $this->spArgs('id');
+		$pro = json_decode(file_get_contents("http://www-1.yimiaofengqiang.com/main/deal/id/".$id.".html?dealsync=1"),1);
+                $pro['title'] = iconv('utf-8','gbk',urldecode($pro['title']));
                 // END 获取seller_id
                 if($pro){
-                    $frompt = spClass("m_actfrom")->find(array('id'=>$pro['act_from']));
-                    $ptname = $frompt['name'];
-                    if(strpos($pro['link'],'item.taobao'))
-                        $this->single = 1;
-                    $pro['ptname'] = $ptname;
                     $this->pro = $pro;
                 }else{
                     header("Location:/");
                 }
                 $this->dujia = json_decode(file_get_contents("http://www.yimiaofengqiang.com/?jsonp=1&othersync=1"),1);
-                if($dealsync){
-                    $pro['title'] = urlencode(iconv('gbk','utf-8',$pro['title']));
-                    echo json_encode($pro);
-                }else{
-                    $this->display("front/deal.html");
-                }
+                $this->display("front/deal.html");
+                
 	}
 	
 	public function outitems(){
