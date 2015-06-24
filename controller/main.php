@@ -45,6 +45,8 @@ class main extends spController{
                 // END »ñÈ¡seller_id
                 if($pro){
                     $this->pro = $pro;
+                    if(strpos($pro['link'],'item.taobao.com')||strpos($pro['link'],'detail.tmall.com'))
+                        $this->single = 1;
                 }else{
                     header("Location:/");
                 }
