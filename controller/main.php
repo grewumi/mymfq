@@ -126,7 +126,7 @@ class main extends spController{
 			$where = $q.' and '.$baseSql;
 		}
 		
-                $itemsTemp = $pros->spPager($page,56)->findAll($where,$order);
+                $itemsTemp = $pros->spCache(480)->getmypage($where,$order,$page,56);
                 $itemsC1 = $pros->findAll($where.' and classification=2',$order);//$pros->spPager($page,56)->findAll($where,$order);
 		
                 // 这里用foreach & 改变数组的值的时候最后一个数据带有 & 符号,导致最后一条数据重复
