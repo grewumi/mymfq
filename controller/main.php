@@ -109,6 +109,7 @@ class main extends spController{
 		$page = $this->spArgs('page',1);
 		$type = $this->spArgs('type');
 		$price = $this->spArgs('price');
+                $act_from = $this->spArgs('act_from');
 				
 		$pros = spClass("m_pro");
 			
