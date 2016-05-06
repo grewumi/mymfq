@@ -110,7 +110,7 @@ class main extends spController{
 		$type = $this->spArgs('type');
 		$price = $this->spArgs('price');
                 $act_from = $this->spArgs('act_from');
-				
+		$qmiaosha = $this->spArgs("qmiaosha");		
 		$pros = spClass("m_pro");
 			
 		if($procat || $type || $price){
@@ -128,9 +128,13 @@ class main extends spController{
 		if($q){
 			$where = $q.' and '.$baseSql;
 		}
-		
+		//ÄÚ²¿È¯ÃëÉ±
+                if($qmiaosha){
+                    $this->qmiaosha = $qmiaosha;
+                    $where = $baseSql.' and quan is not null and quan <> ""';
+                }
                 
-                if($price || $procat || $type || $act_from || $q){
+                if($price || $procat || $type || $act_from || $q || $qmiaosha){
                     if($q)
                         $itemsTemp1 = $pros->spCache(-1)->getmypage($where,$order,$page,56);
                     $itemsTemp1 = $pros->spCache(480)->getmypage($where,$order,$page,56);
@@ -166,7 +170,7 @@ class main extends spController{
 		//$smarty->cache_lifetime = 480; // Ò³Ãæ»º´æ8·ÖÖÓ
 		
 		//var_dump($itemList);
-		if(!$procat && !$type && !$price)
+		if(!$procat && !$type && !$price && !$qmiaosha)
 			$smarty->assign("index",'index');//$this->index = "index";
 		$smarty->assign("procat",$procat);//$this->procat = $procat;
 		$smarty->assign("type",$type);//$this->type = $type;

@@ -47,13 +47,13 @@
 		    {if $pager}
 		    	<!--在当前页不是第一页的时候，显示前页和上一页-->
 			    {if $pager.current_page != $pager.first_page}
-				   <a class="yema-or-cur" href="{spUrl c=main a=index procat=$procat type=$type price=$price q=$q page=$pager.prev_page}">上一页</a> 
+				   <a class="yema-or-cur" href="{spUrl c=main a=index procat=$procat type=$type price=$price q=$q qmiaosha=$qmiaosha page=$pager.prev_page}">上一页</a> 
 			    {/if}
 			    <!--开始循环页码，同时如果循环到当前页则不显示链接-->
 			    {foreach from=$pager.all_pages item=thepage}
 			            {if $thepage != $pager.current_page}
 			            	{if $thepage<=$pager.current_page+8 && $thepage>=$pager.current_page-2}
-			                	<a class="yema-or-cur" href="{spUrl c=main a=index procat=$procat type=$type price=$price q=$q page=$thepage}">{$thepage}</a>
+			                	<a class="yema-or-cur" href="{spUrl c=main a=index procat=$procat type=$type price=$price q=$q qmiaosha=$qmiaosha page=$thepage}">{$thepage}</a>
 			            	{/if}									
 			            {else}
 			            	<b class="cur">{$thepage}</b>
@@ -61,7 +61,7 @@
 			    {/foreach}
 			    <!--在当前页不是最后一页的时候，显示下一页和后页-->
 			    {if $pager.current_page != $pager.last_page}
-			    	<a class="yema-or-cur" href="{spUrl c=main a=index procat=$procat type=$type price=$price q=$q page=$pager.next_page}">下一页</a>
+			    	<a class="yema-or-cur" href="{spUrl c=main a=index procat=$procat type=$type price=$price q=$q qmiaosha=$qmiaosha page=$pager.next_page}">下一页</a>
 			    {/if}
 			{/if}
 		</div>
